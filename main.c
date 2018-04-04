@@ -151,8 +151,8 @@ int	main()
 	printf("%+d\n", 0);
 	ft_printf("ma ft=%0+5d\n", -42);
 	printf("%0+5d\n", -42);
-	ft_printf("%ld\n", 2147483648); 
-	printf("%ld\n", 2147483648);
+	ft_printf("ma ft= %ld\n", 2147483648);
+	printf("ft = %ld\n", 2147483648);
 	/*if (i & 1)
    	{
     	printf("%i est impair.\n", i);

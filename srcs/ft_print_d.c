@@ -97,6 +97,7 @@ void	ft_print_digit(t_env *op)
 	}
 	else
 	{
+		printf("la1");
 		ft_print_digit_width(op);
 		ft_print_digit_sign(op);
 		op->ret += write(1, op->out, ft_strlen(op->out));

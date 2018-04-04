@@ -98,7 +98,7 @@ void	ft_spec_int(t_env *op)
 	else if (op->opt.h == 1)
 		op->out = ft_itoa((short)i);
 	else if (op->opt.l == 1 || op->opt.j == 1 || op->opt.ll == 1)
-		op->out = ft_ltoa((long)i);
+		op->out = ft_ultoa((long)i);
 	else
 		op->out = ft_itoa((unsigned int)i);
 	ft_print_digit(op);

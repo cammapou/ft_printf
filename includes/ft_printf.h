@@ -100,7 +100,7 @@ void	ft_print_digit_sign(t_env *op);
 char	*ft_ultoa(unsigned long long n);
 char	*ft_ltoa(long n);
 char	*ft_itoa(int n);
-char	*ft_ulltoa(long n);
+char	*ft_ulltoa(long long n);
 char	*ft_ultoa_base(unsigned long n, int base);
 char	*ft_uitoa_base(unsigned int n, int base);
 char	*ft_ltoa_base(long n, int base);
