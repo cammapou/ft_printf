@@ -82,7 +82,7 @@ void	ft_option(const char *fmt, t_env *op)
 		}
 		if (ft_strchr(" #+-0hjlz.123456789", fmt[op->i]))
 			return (ft_option(fmt, op));
-		//printf("H = %d\n", op->flags.hash);
+		//printf("+ = %d\n", op->flags.neg);
 		//printf("width = %d\n", op->flags.press);
 	}
 }

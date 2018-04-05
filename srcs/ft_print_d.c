@@ -14,9 +14,8 @@
 
 void	ft_print_digit_sign(t_env *op)
 {
-	if (op->flags.plus || op->flags.space)
-		op->ret += (op->flags.plus == 1 ?
-		write(1, "+", 1) : write(1, " ", 1));
+	if ((op->flags.plus || op->flags.space) && op->out[0] != '-')
+		op->ret += (op->flags.plus == 1 ? write(1, "+", 1) : write(1, " ", 1));
 }
 
 void	ft_print_digit_width(t_env *op)
@@ -30,14 +29,14 @@ void	ft_print_digit_width(t_env *op)
 		op->flags.width--;
 	if (op->flags.press > 0)
 	{
-		while (op->flags.width - ++i > len)
+		while (op->flags.width-- > len)
 			op->ret += write(1, " ", 1);
 		i = -1;
 		while ((int)ft_strlen(op->out) < len - ++i)
 			op->ret += write(1, "0", 1);
 	}
 	else
-		while (op->flags.width - ++i > len)
+		while (op->flags.width-- > len)
 			op->ret += (op->flags.zero == 1 ?
 			write(1, "0", 1) : write(1, " ", 1));
 }
@@ -81,11 +80,11 @@ void	ft_check_digit_prec(t_env *op)
 
 void	ft_print_digit(t_env *op)
 {
+
 	op->flags.neg ? op->flags.zero = 0 : 0;
-	//op->flags.neg ? op->flags.width = 0 : 0;
-	ft_check_digit_prec(op);
 	if (op->flags.zero)
 	{
+		ft_check_digit_prec(op);
 		ft_print_digit_sign(op);
 		ft_print_digit_width(op);
 		op->ret += write(1, op->out, ft_strlen(op->out));
@@ -97,10 +96,10 @@ void	ft_print_digit(t_env *op)
 	}
 	else
 	{
-		ft_print_digit_width(op);
-		ft_print_digit_sign(op);
-		op->ret += write(1, op->out, ft_strlen(op->out));
-	}
+			ft_print_digit_sign(op);
+			ft_print_digit_width(op);
+			op->ret += write(1, op->out, ft_strlen(op->out));
+		}
 	++op->i;
 	free(op->out);
 }

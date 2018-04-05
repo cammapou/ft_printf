@@ -134,11 +134,13 @@ int	main()
 
 	printf("\n-------RAMDOM TEST-------\n");
 
-	//ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
-	//printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
+	//ft_printf("%05d\n", -42);
+	//printf("%05d\n", -42);
 
-	ft_printf("@moulitest: |%#.x %#.0x|\n", 0, 0);
-	printf("@moulitest: |%#.x %#.0x|", 0, 0);
+	ft_printf("%0+5d\n", -42);
+	printf("%0+5d\n", -42);
+	ft_printf("%0+5d\n", 42);
+	printf("%0+5d\n", 42);
 	/*char* l = setlocale(LC_ALL, "");
 	if (l == NULL) {
 	printf("Locale not set\n");

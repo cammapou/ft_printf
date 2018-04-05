@@ -93,7 +93,7 @@ void	ft_spec_int(t_env *op)
 	len = 0;
 	tmp = (int)va_arg(op->ap, long);
 	i = (long long)tmp;
-	if (op->opt.hh == 1)
+  if (op->opt.hh == 1)
 		op->out = ft_itoa((char)i);
 	else if (op->opt.h == 1)
 		op->out = ft_itoa((short)i);
