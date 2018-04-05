@@ -22,7 +22,7 @@ SRC =	ft_printf.c \
 		ft_print_invalid.c \
 		ft_print_wchar.c \
 		ft_print_wstr.c \
-		ft_print_ptr.c \
+		ft_print_p.c \
 		ft_itoa.c \
 		ft_ltoa.c \
 		ft_ultoa.c \
@@ -41,12 +41,15 @@ SRC =	ft_printf.c \
 		ft_strlower.c \
 		ft_memset.c \
 		ft_strcpy.c \
+		ft_uitoa.c \
+		ft_basetoa.c \
+		ft_print_base.c \
 		ft_strcat.c
 
 OBJ = $(SRC:.c=.o)
 
-SRCDIR = srcs
-OBJDIR = objs
+	SRCDIR = srcs
+	OBJDIR = objs
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJ))
@@ -54,7 +57,6 @@ HEADER = -I includes
 
 CC = gcc
 CFLAGS = -c -Wall -Wextra -Werror
-NORM = norminette
 
 C_NO = "\033[00m"
 C_OK = "\033[35m"

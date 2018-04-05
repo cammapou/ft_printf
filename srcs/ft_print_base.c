@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
 void	ft_print_base_pre(t_env *op, char type, long val)
@@ -51,6 +50,9 @@ void	ft_print_base_width(t_env *op, char type)
 	}
 	if (op->flags.press >= 0)
 	{
+		if (op->flags.zero == 1)
+			while (op->flags.width-- > len)
+				op->ret += write(1, "0", 1);
 		while (op->flags.width > op->flags.press + ++i && op->flags.width > len + i)
 			op->ret += write(1, " ", 1);
 		while (op->flags.width > len + i++)
@@ -89,7 +91,7 @@ void	ft_check_base_prec(t_env *op, char type)
 	}
 }
 
-void  ft_check_base(t_env *op, char type)
+void  ft_print_base(t_env *op, char type, long val)
 {
 	if (op->flags.zero)
 	{

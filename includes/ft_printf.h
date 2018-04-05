@@ -74,6 +74,10 @@ void	ft_get_spec(const char *format, t_env *op);
 void	ft_spec_char(t_env *op, char type);
 void	ft_spec_int(t_env *op);
 void	ft_spec_unsint(t_env *op, char type);
+void	ft_spec_wchar(t_env *op, char type);
+void	ft_spec_percent(t_env *op);
+void	ft_spec_ptraddr(t_env *op);
+void	ft_spec_base(t_env *op, char type);
 /*
 **				ft_print_str
 */
@@ -95,9 +99,37 @@ void	ft_check_digit_sign(t_env *op);
 void	ft_print_digit_width(t_env *op);
 void	ft_print_digit_sign(t_env *op);
 /*
+**				wchar_c
+*/
+void	ft_print_wchar(t_env *op, wchar_t ws);
+void	ft_print_wchar_minus(t_env *op, wchar_t ws);
+void	ft_put_wc(t_env *op, wchar_t c);
+void	ft_put_wchar(char c);
+/*
+**				wchar_str
+*/
+void	ft_print_wstr(t_env *op, wchar_t *wc);
+void	ft_print_wstr_minus(t_env *op, wchar_t *wc);
+int		ft_get_wstr_len(wchar_t *wc);
+void	ft_put_wstr_c(t_env *op, char c);
+/*
+**				print_base
+*/
+void	ft_print_base_pre(t_env *op, char type, long val);
+void	ft_print_base_width(t_env *op, char type);
+void  ft_print_base(t_env *op, char type, long val);
+void	ft_check_base_prec(t_env *op, char type);
+/*
+**				print_ptr
+*/
+void	ft_print_ptraddr(t_env *op, char type);
+void	ft_print_ptraddr_width(t_env *op);
+void	ft_ptraddr_prec(t_env *op);
+/*
 **				tools
 */
-char	*ft_ultoa(unsigned long long n);
+char	*ft_uitoa(unsigned int n);
+char	*ft_ultoa(unsigned long n);
 char	*ft_ltoa(long n);
 char	*ft_itoa(int n);
 char	*ft_ulltoa(long long n);
@@ -116,32 +148,14 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_strlower(char *s);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strcat(char *dest, const char *src);
-/*
-**				wchar_c
-*/
-void	ft_spec_wchar(t_env *op, char type);
-void	ft_print_wchar(t_env *op, wchar_t ws);
-void	ft_print_wchar_minus(t_env *op, wchar_t ws);
-void	ft_put_wc(t_env *op, wchar_t c);
-void	ft_put_wchar(char c);
-/*
-**				wchar_str
-*/
-void	ft_print_wstr(t_env *op, wchar_t *wc);
-void	ft_print_wstr_minus(t_env *op, wchar_t *wc);
-int		ft_get_wstr_len(wchar_t *wc);
-void	ft_put_wstr_c(t_env *op, char c);
-/*
-**				print_ptr
-*/
-void	ft_print_ptraddr(t_env *op, char type);
-void	ft_print_ptraddr_width(t_env *op);
-void	ft_ptraddr_prec(t_env *op);
-/*
-**				print_base
-*/
-void  	ft_check_base(t_env *op, char type);
-void	ft_check_base_prec(t_env *op, char type);
-void	ft_print_base_width(t_env *op, char type);
-void	ft_print_base_pre(t_env *op, char type, long val);
+
+
+
+
+
+char				*ft_get_string_pointer(t_env *op);
+char				*ft_basetoa(uintmax_t number, int base);
+void			ft_write_chars(char *string, int base, char conversion[base], uintmax_t number);
+int			ft_count_digits(uintmax_t number, int base);
+void			ft_set_conversion_array(char *array, int base);
 #endif

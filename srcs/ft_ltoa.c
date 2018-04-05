@@ -19,7 +19,7 @@ char	*ft_ltoa(long n)
 	int		len;
 
 	if (n == LONG_MIN)
-		return (ft_strdup("-9223372036854775808"));
+		return (ft_strdup("–2147483648"));
 	len = 1;
 	n < 0 ? ++len : 0;
 	nb = n < 0 ? -n : n;

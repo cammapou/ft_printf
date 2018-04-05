@@ -28,13 +28,7 @@ void	ft_print_width(t_env *op)
 
 void	ft_print_null_str(t_env *op)
 {
-	int		len;
-
-	len = (op->flags.press < 0 ? 6 : op->flags.press);
-	while (--op->flags.width > len)
-		op->ret += (op->flags.zero == 1 ?
-				write(1, "0", 1) : write(1, " ", 1));
-	op->ret += write(1, "(null)", len);
+	op->ret += write(1, "(null)", 6);
 	++op->i;
 }
 

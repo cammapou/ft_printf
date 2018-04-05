@@ -12,50 +12,31 @@
 
 #include "ft_printf.h"
 
-static size_t	ft_size(int n, unsigned long long *neg)
+char			*ft_ulltoa(long long n)
 {
-	unsigned long long	i;
-
-	i = 1;
-	*neg = 0;
-	if (n < 0)
-	{
-		*neg = 1;
-		n = -n;
-	}
-	while (n >= 10)
-	{
-		n = n / 10;
-		i++;
-	}
-	if (*neg == 1)
-		i = i + 1;
-	return (i);
-}
-
-char			*ft_ulltoa(long n)
-{
-	unsigned long int	size;
-	int					i;
-	char				*str;
-	unsigned long long	neg;
+	char	*s;
+	long long	nb;
+	int		len;
 
 	if (n == -9223372036854775807)
 		return (ft_strdup("-9223372036854775807"));
-	size = ft_size(n, &neg);
-	if (!(str = (char*)malloc(sizeof(char) * size + 1)))
-		return (NULL);
-	i = size;
-	if (neg == 1)
-		n = -n;
-	while (i >= 0)
-	{
-		str[i - 1] = (n % 10) + 48;
-		n = n / 10;
-		i--;
+		len = 1;
+		n < 0 ? ++len : 0;
+		nb = n < 0 ? -n : n;
+		while (nb > 9)
+		{
+			nb /= 10;
+			++len;
+		}
+		s = (char*)malloc(sizeof(char) * (len + 1));
+		s[len] = '\0';
+		n < 0 ? *s = '-' : 0;
+		n < 0 ? n = -n : 0;
+		while (n > 9)
+		{
+			s[--len] = (n % 10) + 48;
+			n /= 10;
+		}
+		s[--len] = n + 48;
+		return (s);
 	}
-	if (neg == 1)
-		str[0] = '-';
-	str[size] = '\0';
-	return (str);
-}

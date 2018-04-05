@@ -80,35 +80,33 @@ void	ft_option(const char *fmt, t_env *op)
 				while (ft_isdigit(fmt[++op->i]))
 					op->flags.press = (op->flags.press * 10) + fmt[op->i] - 48;
 		}
+		if (ft_strchr(" #+-0hjlz.123456789", fmt[op->i]))
+			return (ft_option(fmt, op));
+		//printf("H = %d\n", op->flags.hash);
+		//printf("width = %d\n", op->flags.press);
 	}
 }
 
 void	ft_get_spec(const char *fmt, t_env *op)
 {
-	if ((fmt[op->i] == 's' || fmt[op->i] == 'c') && op->opt.l == 0)
+	if (fmt[op->i] == '%' || !fmt[op->i])
+		ft_spec_percent(op);
+	else if ((fmt[op->i] == 's' || fmt[op->i] == 'c') && op->opt.l == 0)
 		ft_spec_char(op, fmt[op->i]);
 	else if ((fmt[op->i] == 'd' || fmt[op->i] == 'i') && op->opt.z == 0)
-	{
-		printf("la");
 		ft_spec_int(op);
-	}
-
 	else if (((fmt[op->i] == 'd' || fmt[op->i] == 'i') && op->opt.z == 1)
 				|| fmt[op->i] == 'D' || fmt[op->i] == 'U' || fmt[op->i] == 'u')
 		ft_spec_unsint(op, fmt[op->i]);
 	else if (((fmt[op->i] == 's' || fmt[op->i] == 'c') && op->opt.l == 1)
 			|| fmt[op->i] == 'C' || fmt[op->i] == 'S')
 		ft_spec_wchar(op, fmt[op->i]);
-	/*else if (fmt[e->i] == 'p' || fmt[e->i] == 'P')
-	  {
-	  spec_ptraddr(e, fmt[e->i]);
-	  }*/
-	/*else if (ft_strchr("boxBOX", fmt[e->i]))
-	  {
-	  spec_base(e, fmt[e->i]);
-	  }
-	  else if (fmt[e->i] != '\0')
-	  {
+	else if (fmt[op->i] == 'p' || fmt[op->i] == 'P')
+	  ft_spec_ptraddr(op);
+	else if (ft_strchr("boxBOX", fmt[op->i]))
+	  ft_spec_base(op, fmt[op->i]);
+	 /* else if (fmt[op->i] != '\0')
+
 	  print_invalid_spec(e, fmt[e->i]);
 	  }*/
 }

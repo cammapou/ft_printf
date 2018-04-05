@@ -35,6 +35,7 @@ int	main()
 	int					zero = 0;
 	wchar_t 			tt = 0xFFFF;
 	int i = 1;
+	char	*z = "bonjour";
 	/*
 	**  MAIN_TEST
 	*/
@@ -132,6 +133,12 @@ int	main()
 
 
 	printf("\n-------RAMDOM TEST-------\n");
+
+	//ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
+	//printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
+
+	ft_printf("@moulitest: |%#.x %#.0x|\n", 0, 0);
+	printf("@moulitest: |%#.x %#.0x|", 0, 0);
 	/*char* l = setlocale(LC_ALL, "");
 	if (l == NULL) {
 	printf("Locale not set\n");
@@ -145,14 +152,24 @@ int	main()
 	//ft_printf("ma ft= %-5%");
 	//printf("ft= %-5%");
 	//ft_printf("%+d", 4242424242424242424242);
-	ft_printf("ma ft=% d\n", -42);
+	/*ft_printf("ma ft=% d\n", -42);
 	printf("% d\n", -42);
 	ft_printf("ma ft=%+d\n", 0);
 	printf("%+d\n", 0);
 	ft_printf("ma ft=%0+5d\n", -42);
 	printf("%0+5d\n", -42);
-	ft_printf("ma ft= %ld\n", 2147483648);
-	printf("ft = %ld\n", 2147483648);
+	ft_printf("ma ft= |% h|\n");
+	printf("ft = |% h|\n");
+	ft_printf("@moulitest: %s\n", NULL);
+	ft_printf("%5%\n");
+	printf("%5%\n");*/
+	/*ft_printf("ft%%%\n", "test");
+	printf("%%%\n", "test");
+	ft_printf("%5+d\n", 42);
+	printf("%5+d\n", 42);*/
+
+  //ft_printf("Pointeur [p] : {%p}\n", z);
+	//printf("Pointeur [p] : {%p}\n", z);
 	/*if (i & 1)
    	{
     	printf("%i est impair.\n", i);

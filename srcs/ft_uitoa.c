@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultoa.c                                         :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kenguyen <kenguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 11:41:47 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 14:07:19 by cammapou         ###   ########.fr       */
+/*   Created: 2018/02/07 15:36:35 by kenguyen          #+#    #+#             */
+/*   Updated: 2018/02/10 19:47:01 by kenguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_ultoa(unsigned long n)
+char	*ft_uitoa(unsigned int n)
 {
-	char				*s;
-	unsigned long	nb;
-	int					len;
+	char			*s;
+	unsigned int	nb;
+	int				len;
 
 	len = 1;
 	nb = n;

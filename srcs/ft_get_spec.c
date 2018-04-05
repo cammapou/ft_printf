@@ -12,31 +12,31 @@
 
 #include "ft_printf.h"
 
-/*void	ft_spec_base(t_env *op, char type)
-  {
+void	ft_spec_base(t_env *op, char type)
+{
   long			tmp;
   unsigned long	val;
 
   val = 0;
   tmp = va_arg(op->ap, long);
-  if (op->option.hh == 1)
+  if (op->opt.hh == 1)
   val = (unsigned char)tmp;
-  else if (type == 'O' || op->option.z == 1 || op->option.ll == 1 ||
-  op->option.j == 1 || op->option.l == 1)
+  else if (type == 'O' || op->opt.z == 1 || op->opt.ll == 1 ||
+  op->opt.j == 1 || op->opt.l == 1)
   val = (unsigned long)tmp;
-  else if (op->option.h == 1)
+  else if (op->opt.h == 1)
   val = (unsigned short)tmp;
-  else if ((op->option.l == 0 || op->option.j == 0 || op->option.ll == 0 ||
-  op->option.z == 0 || op->option.h == 0 || op->option.hh == 0)
+  else if (op->opt.l == 0 || op->opt.j == 0 || op->opt.ll == 0 ||
+  op->opt.z == 0 || op->opt.h == 0 || op->opt.hh == 0)
   val = (unsigned int)tmp;
   (type == 'b' || type == 'B') ? op->out = ft_ultoa_base(val, 2) : 0;
   (type == 'o' || type == 'O') ? op->out = ft_ultoa_base(val, 8) : 0;
   (type == 'x' || type == 'X') ? op->out = ft_ultoa_base(val, 16) : 0;
   if (type == 'b' || type == 'o' || type == 'x')
   ft_strlower(op->out);
-  op->flags.neg == 1 ? e->flag.zero = 0 : 0;
+  op->flags.neg == 1 ? op->flags.zero = 0 : 0;
   ft_print_base(op, type, (long)val);
-  }*/
+}
 
 void	ft_spec_unsint(t_env *op, char type)
 {
@@ -98,8 +98,8 @@ void	ft_spec_int(t_env *op)
 	else if (op->opt.h == 1)
 		op->out = ft_itoa((short)i);
 	else if (op->opt.l == 1 || op->opt.j == 1 || op->opt.ll == 1)
-		op->out = ft_ultoa((long)i);
+		op->out = ft_uitoa((long)i);
 	else
-		op->out = ft_itoa((unsigned int)i);
+		op->out = ft_itoa((int)i);
 	ft_print_digit(op);
 }
