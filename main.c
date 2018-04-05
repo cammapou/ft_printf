@@ -137,10 +137,18 @@ int	main()
 	//ft_printf("%05d\n", -42);
 	//printf("%05d\n", -42);
 
+	printf("%d\n", ft_printf("%4.15d\n", 42));
+	printf("%d\n", printf("%4.15d\n", 42));
 	ft_printf("%0+5d\n", -42);
 	printf("%0+5d\n", -42);
 	ft_printf("%0+5d\n", 42);
 	printf("%0+5d\n", 42);
+
+	ft_printf("%05d", -42);
+	ft_printf("%-5d", 42);
+	ft_printf("%-05d", 42);
+	ft_printf("%-5d", -42);
+	ft_printf("%-05d", -42);
 	/*char* l = setlocale(LC_ALL, "");
 	if (l == NULL) {
 	printf("Locale not set\n");
