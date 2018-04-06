@@ -94,10 +94,16 @@ void	ft_get_spec(const char *fmt, t_env *op)
 	else if ((fmt[op->i] == 's' || fmt[op->i] == 'c') && op->opt.l == 0)
 		ft_spec_char(op, fmt[op->i]);
 	else if ((fmt[op->i] == 'd' || fmt[op->i] == 'i') && op->opt.z == 0)
+	{
+	//	printf("la0");
 		ft_spec_int(op);
+	}
 	else if (((fmt[op->i] == 'd' || fmt[op->i] == 'i') && op->opt.z == 1)
 				|| fmt[op->i] == 'D' || fmt[op->i] == 'U' || fmt[op->i] == 'u')
-		ft_spec_unsint(op, fmt[op->i]);
+	{		
+			ft_spec_unsint(op, fmt[op->i]);
+	}
+
 	else if (((fmt[op->i] == 's' || fmt[op->i] == 'c') && op->opt.l == 1)
 			|| fmt[op->i] == 'C' || fmt[op->i] == 'S')
 		ft_spec_wchar(op, fmt[op->i]);

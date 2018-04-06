@@ -24,13 +24,6 @@ void	ft_print_base_pre(t_env *op, char type, long val)
 		op->ret += (type == 'X') ? write(1, "0X", 2) : 0;
 		type == 'a' || type == 'A' ? op->flags.width -= 2 : 0;
 	}
-	//else if ((type == 'o' || type == 'O') && op->flags.hash && op->flags.press >= 0)
-	//	op->ret += write(1, "0", 1);
-	/*else if (type == 'a' || type == 'A')
-	{
-		op->ret += type == 'a' ? write(1, "0x", 2) : write(1, "0X", 2);
-		op->flags.width -= 2;
-	}*/
 	else if (op->flags.neg)
 		while (op->flags.press-- > len)
 			op->ret += write(1, "0", 1);
@@ -41,10 +34,8 @@ void	ft_print_base_pre(t_env *op, char type, long val)
 
 void	ft_print_base_width(t_env *op, char type)
 {
-	int	i;
 	int len;
 
-	i = -1;
 	len = ft_strlen(op->out);
 	if (op->flags.hash && (op->out[0] != '\0' && op->out[0] != '0'))
 	{
@@ -53,13 +44,8 @@ void	ft_print_base_width(t_env *op, char type)
 	}
 	if (op->flags.press > 0)
 	{
-		//printf("la1");
-		if (op->flags.zero == 1)
-			while (op->flags.width-- > len)
-				op->ret += write(1, "0", 1);
 	if (op->flags.width > 0 && op->flags.neg == 0)
 	{
-	//	printf("la");
 		while (op->flags.width > op->flags.press && op->flags.width-- > len)
 			op->ret += write(1, " ", 1);
 	}
@@ -68,7 +54,7 @@ void	ft_print_base_width(t_env *op, char type)
 	}
 	else
 	{
-		while (op->flags.width > len + ++i)
+		while (op->flags.width-- > len)
 			op->ret += (op->flags.zero == 1 ?
 					write(1, "0", 1) : write(1, " ", 1));
 	}
@@ -103,21 +89,18 @@ void  ft_print_base(t_env *op, char type, long val)
 {
 	if (op->flags.zero)
 	{
-		//printf("ici0\n");
 		ft_print_base_pre(op, type, val);
 		ft_print_base_width(op, type);
 		op->ret += write(1, op->out, ft_strlen(op->out));
 	}
 	else if (op->flags.neg)
 	{
-		//printf("ici2\n");
 		ft_print_base_pre(op, type, val);
 		op->ret += write(1, op->out, ft_strlen(op->out));
 		ft_print_base_width(op, type);
 	}
 	else
 	{
-		//printf("ici3\n");
 		ft_print_base_width(op, type);
 		ft_print_base_pre(op, type, val);
 		op->ret += write(1, op->out, ft_strlen(op->out));

@@ -52,6 +52,7 @@ typedef	struct	s_env
 	t_flags		flags;
 	t_option	opt;
 	char		*out;
+	long 		tmp;
 	int			ret;
 	int			len;
 }				t_env;
@@ -72,7 +73,7 @@ void	ft_get_spec(const char *format, t_env *op);
 **				ft_get_spec
 */
 void	ft_spec_char(t_env *op, char type);
-void	ft_spec_int(t_env *op);
+void  ft_spec_int(t_env *op);
 void	ft_spec_unsint(t_env *op, char type);
 void	ft_spec_wchar(t_env *op, char type);
 void	ft_spec_percent(t_env *op);

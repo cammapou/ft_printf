@@ -78,17 +78,16 @@ void	ft_check_digit_prec(t_env *op)
 
 void	ft_print_digit(t_env *op)
 {
-
 	if (op->flags.zero && ft_strchr("-", op->out[0]))
 	{
-	//	printf("la0\n");
+		//printf("la0\n");
 		ft_check_digit_prec(op);
 		ft_print_digit_width(op);
 		op->ret += write(1, op->out, ft_strlen(op->out));
 	}
 	else if (op->flags.zero)
 	{
-	//	printf("la1\n");
+		//printf("la1\n");
 		ft_check_digit_prec(op);
 		ft_print_digit_sign(op);
 		ft_print_digit_width(op);
@@ -96,13 +95,13 @@ void	ft_print_digit(t_env *op)
 	}
 	else if (op->flags.neg)
 	{
-	//	printf("la\n");
+		//printf("la\n");
 		op->ret += write(1, op->out, ft_strlen(op->out));
 		ft_print_digit_width(op);
 	}
 	else
 	{
-	//	printf("la2\n");
+		//printf("la2\n");
 			ft_print_digit_sign(op);
 			ft_print_digit_width(op);
 			op->ret += write(1, op->out, ft_strlen(op->out));

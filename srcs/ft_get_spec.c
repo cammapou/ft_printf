@@ -91,16 +91,23 @@ void	ft_spec_int(t_env *op)
 	int		len;
 
 	len = 0;
-	tmp = (int)va_arg(op->ap, long);
+	tmp = (long)va_arg(op->ap, long);
 	i = (long long)tmp;
+  if (tmp == LLONG_MIN)
+	{
+    op->out = ft_strdup("-9223372036854775808");
+    //op->ret += write(1, "-9223372036854775808", ft_strlen(op->out));
+  }
   op->flags.neg ? op->flags.zero = 0 : 0;
   if (op->opt.hh == 1)
 		op->out = ft_itoa((char)i);
 	else if (op->opt.h == 1)
 		op->out = ft_itoa((short)i);
 	else if (op->opt.l == 1 || op->opt.j == 1 || op->opt.ll == 1)
-		op->out = ft_uitoa((long)i);
+    op->out = ft_ulltoa((long)i);
 	else
 		op->out = ft_itoa((int)i);
-	ft_print_digit(op);
+  //if (tmp == LLONG_MIN)
+  //  exit(EXIT_SUCCESS);
+	   ft_print_digit(op);
 }
