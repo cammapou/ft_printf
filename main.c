@@ -142,13 +142,51 @@ int	main()
 	ft_printf("%0+5d\n", -42);
 	printf("%0+5d\n", -42);
 	ft_printf("%0+5d\n", 42);
-	printf("%0+5d\n", 42);
+	printf("%0+5d\n\n", 42);
 
-	ft_printf("%05d", -42);
-	ft_printf("%-5d", 42);
-	ft_printf("%-05d", 42);
-	ft_printf("%-5d", -42);
-	ft_printf("%-05d", -42);
+	//printf("%d\n", ft_printf("ft= |%05d|\n", -42));
+//	printf("%d\n", printf("|%05d|\n", -42));
+	printf("%d\n", ft_printf("ft= |%-5d|\n", 42));
+	printf("%d\n", printf("%-5d|\n", 42));
+	printf("%d\n", ft_printf("ft= |%-05d|\n", 42));
+	printf("%d\n", printf("|%-05d|\n", 42));
+	printf("%d\n", ft_printf("ft= |%-5d|\n", -42));
+	printf("%d\n", printf("|%-5d|\n", -42));
+	printf("%d\n", ft_printf("ft= |%-05d|\n", -42));
+	printf("%d\n", printf("|%-05d|\n", -42));
+
+
+	ft_printf("|%-5.10o|\n", 2500);
+	printf("|%-5.10o|\n", 2500);
+
+	ft_printf("|%-10.5o|\n", 2500);
+	printf("|%-10.5o|\n", 2500);
+
+	ft_printf("|%5.2x|\n", 5427);
+	printf("|%5.2x|\n", 5427);
+
+	ft_printf("@moulitest: %.10o\n", 42);
+	printf("@moulitest: %.10o\n", 42);
+
+	ft_printf("%5o\n", 41);
+	printf("%5o\n", 41);
+	ft_printf("%05o\n", 42);
+	printf("%05o\n", 42);
+	ft_printf("%-5o\n", 2500);
+	printf("%-5o\n", 2500);
+	ft_printf("%#6o\n", 2500);
+	printf("%#6o\n", 2500);
+
+	ft_printf("ld = %ld\n", -2147483649);
+	printf("ld = %ld\n\n", -2147483649);
+	ft_printf("jd = %jd\n", 9223372036854775807);
+	printf("jd = %jd\n\n", 9223372036854775807);
+	ft_printf("lld = %lld\n", 9223372036854775807);
+	printf("lld = %lld\n\n", 9223372036854775807);
+	ft_printf("lld = %lld\n", -9223372036854775808);
+	printf("lld = %lld\n\n", -9223372036854775808);
+	ft_printf("jd = %jd\n", -9223372036854775808);
+	printf("jd = %jd\n\n", -9223372036854775808);
 	/*char* l = setlocale(LC_ALL, "");
 	if (l == NULL) {
 	printf("Locale not set\n");
