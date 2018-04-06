@@ -174,8 +174,8 @@ int	main()
 	printf("%05o\n", 42);
 	ft_printf("%-5o\n", 2500);
 	printf("%-5o\n", 2500);
-	ft_printf("%#6o\n", 2500);
-	printf("%#6o\n", 2500);
+	ft_printf("--> %#o\n", 0);
+	printf("--> = %#o\n", 0);
 
 	ft_printf("ld = %ld\n", -2147483649);
 	printf("ld = %ld\n\n", -2147483649);
