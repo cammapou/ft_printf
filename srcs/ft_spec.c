@@ -38,9 +38,6 @@ void	ft_spec_ptraddr(t_env *op, char type)
 	long			value;
 
 	value = (long)va_arg(op->ap, void*);
-
-	if (value == 0)
-		op->ret += write(1, "0x0", 4);
 	op->out = ft_ultoa_base(value, 16);
 	ft_print_ptraddr(op, type);
 }

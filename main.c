@@ -196,8 +196,8 @@ int	main()
   printf("|%03.2d|\n", 1);
 
 
-	printf("|%p|\n",  0x7ffdffae488c);
-	ft_printf("|%p|\n",  0x7ffdffae488c);
+	printf("|%p|\n",  0x0);
+	ft_printf("|%p|\n",  0x0);
 
 	printf("|%#x|\n",  0x7ffdffae488c);
 	ft_printf("|%#x|\n",  0x7ffdffae488c);
