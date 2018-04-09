@@ -33,9 +33,9 @@ int	main()
 	char				null = '\0';
 	char				*strnull = "NULL";
 	int					zero = 0;
-	wchar_t 			tt = 0xFFFF;
-	int i = 1;
-	char	*z = "bonjour";
+	//wchar_t 			tt = 0xFFFF;
+	//int i = 1;
+	//char	*z = "bonjour";
 	/*
 	**  MAIN_TEST
 	*/
@@ -149,11 +149,11 @@ int	main()
 	printf("%d\n", ft_printf("ft= |%-5d|\n", 42));
 	printf("%d\n", printf("%-5d|\n", 42));
 	printf("%d\n", ft_printf("ft= |%-05d|\n", 42));
-	printf("%d\n", printf("|%-05d|\n", 42));
+	printf("%d\n", printf("|%05d|\n", 42));
 	printf("%d\n", ft_printf("ft= |%-5d|\n", -42));
 	printf("%d\n", printf("|%-5d|\n", -42));
 	printf("%d\n", ft_printf("ft= |%-05d|\n", -42));
-	printf("%d\n", printf("|%-05d|\n", -42));
+	printf("%d\n", printf("|%-5d|\n", -42));
 
 
 	ft_printf("|%-5.10o|\n", 2500);
@@ -195,15 +195,14 @@ int	main()
   ft_printf("|%03.2d|\n", 1);
   printf("|%03.2d|\n", 1);
 
-
-	printf("|%p|\n",  0x0);
-	ft_printf("|%p|\n",  0x0);
-
-	printf("|%#x|\n",  0x7ffdffae488c);
-	ft_printf("|%#x|\n",  0x7ffdffae488c);
+	printf("|%#lx|\n",  0x7ffdffae488c);
+	ft_printf("|%#lx|\n",  0x7ffdffae488c);
 
 	ft_printf("%X\n", 42);
 	printf("%X\n", 42);
+
+	//ft_printf("{%10R}\n");
+	//printf("{%10R}\n");
 	//ft_printf("ft = %U\n", 42);
 	//printf("%U\n", 42);
 	//ft_printf("ft = %hU\n", 4294967296);

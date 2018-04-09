@@ -127,6 +127,11 @@ void	ft_print_ptraddr(t_env *op, char type);
 void	ft_print_ptraddr_width(t_env *op);
 void	ft_ptraddr_prec(t_env *op);
 /*
+**				print_invalid_spec
+*/
+void	ft_print_invalid_spec(t_env *op, char c);
+void	ft_print_invalid_width(t_env *op);
+/*
 **				tools
 */
 char	*ft_uitoa(unsigned int n);

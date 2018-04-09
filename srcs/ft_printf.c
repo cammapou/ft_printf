@@ -37,6 +37,5 @@ int		ft_printf(const char *fmt, ...)
 			op->ret = op->ret + write(1, &fmt[op->i++], 1);
 	}
 	va_end(op->ap);
-	//ft_putstr(op->buff);
 	return (op->ret);
 }
