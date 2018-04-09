@@ -77,7 +77,7 @@ void  ft_spec_int(t_env *op);
 void	ft_spec_unsint(t_env *op, char type);
 void	ft_spec_wchar(t_env *op, char type);
 void	ft_spec_percent(t_env *op);
-void	ft_spec_ptraddr(t_env *op);
+void	ft_spec_ptraddr(t_env *op, char type);
 void	ft_spec_base(t_env *op, char type);
 /*
 **				ft_print_str
@@ -154,7 +154,7 @@ char	*ft_strcat(char *dest, const char *src);
 
 
 
-char				*ft_get_string_pointer(t_env *op);
+void				ft_get_string_pointer(t_env *op);
 char				*ft_basetoa(uintmax_t number, int base);
 void			ft_write_chars(char *string, int base, char conversion[base], uintmax_t number);
 int			ft_count_digits(uintmax_t number, int base);

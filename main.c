@@ -180,8 +180,7 @@ int	main()
 	ft_printf("@moulitest: |%5.o %5.0o|\n", 0, 0);
 	printf("@moulitest: |%5.o %5.0o|\n\n", 0, 0);
 
-	//printf("|%lld|\n", -9223372036854775808);
-	//ft_printf("|%lld|\n", -9223372036854775808);
+
 
 	ft_printf("|%-10.5d|\n", 4242);
 	printf("|%-10.5d|\n", 4242);
@@ -196,6 +195,15 @@ int	main()
   ft_printf("|%03.2d|\n", 1);
   printf("|%03.2d|\n", 1);
 
+
+	printf("|%p|\n",  0x7ffdffae488c);
+	ft_printf("|%p|\n",  0x7ffdffae488c);
+
+	printf("|%#x|\n",  0x7ffdffae488c);
+	ft_printf("|%#x|\n",  0x7ffdffae488c);
+
+	ft_printf("%X\n", 42);
+	printf("%X\n", 42);
 	//ft_printf("ft = %U\n", 42);
 	//printf("%U\n", 42);
 	//ft_printf("ft = %hU\n", 4294967296);

@@ -33,20 +33,16 @@ void	ft_spec_wchar(t_env *op, char type)
 	}
 }
 
-void	ft_spec_ptraddr(t_env *op)
+void	ft_spec_ptraddr(t_env *op, char type)
 {
-  //long			tmp;
-  //unsigned long	addr;
+	long			value;
 
-	ft_get_string_pointer(op);
-  //tmp = (long)va_arg(op->ap, void*);
-//  addr = (unsigned long)tmp;
+	value = (long)va_arg(op->ap, void*);
 
-  /*if (op->flags.press == 0)
-  op->out = ft_strdup("\0");
-  else
-		op->out = ft_ltoa_base(addr, 16);
-  ft_print_ptraddr(op, type);*/
+	if (value == 0)
+		op->ret += write(1, "0x0", 4);
+	op->out = ft_ultoa_base(value, 16);
+	ft_print_ptraddr(op, type);
 }
 
 void	ft_spec_percent(t_env *op)
