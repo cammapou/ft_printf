@@ -9,7 +9,7 @@ char				*ft_get_string_pointer(t_env *op)
 	value = (long)va_arg(op->ap, void*);
 	if (value == 0)
 		return (ft_strdup("0x0"));
-	before = ft_basetoa(value, 16);
+	before = ft_ultoa_base(value, 16);
 	ft_strlower(before);
 	string = ft_strjoin("0x", before);
 	op->ret += write(1, string, ft_strlen(before));
