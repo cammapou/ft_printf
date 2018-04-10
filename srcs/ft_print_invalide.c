@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_invalid.c                                 :+:      :+:    :+:   */
+/*   ft_print_invalide.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 11:36:46 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 11:36:49 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 12:02:53 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 12:02:54 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_print_invalid_width(t_env *op)
 {
 	while (op->flags.width-- > 1)
-		op->ret += op->flags.zero == 1 ?
-			write(1, "0", 1) : write(1, " ", 1);
+		op->ret += (op->flags.zero == 1 ?
+		write(1, "0", 1) : write(1, " ", 1));
 }
 
 void	ft_print_invalid_spec(t_env *op, char c)

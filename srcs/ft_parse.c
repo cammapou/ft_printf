@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 11:34:38 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 14:08:24 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:26:52 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:26:54 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,15 @@ void	ft_get_spec(const char *fmt, t_env *op)
 	else if ((fmt[op->i] == 'd' || fmt[op->i] == 'i') && op->opt.z == 0)
 		ft_spec_int(op);
 	else if (((fmt[op->i] == 'd' || fmt[op->i] == 'i') && op->opt.z == 1)
-				|| fmt[op->i] == 'D' || fmt[op->i] == 'U' || fmt[op->i] == 'u')
-			ft_spec_unsint(op, fmt[op->i]);
+		|| fmt[op->i] == 'D' || fmt[op->i] == 'U' || fmt[op->i] == 'u')
+		ft_spec_unsint(op, fmt[op->i]);
 	else if (((fmt[op->i] == 's' || fmt[op->i] == 'c') && op->opt.l == 1)
 			|| fmt[op->i] == 'C' || fmt[op->i] == 'S')
 		ft_spec_wchar(op, fmt[op->i]);
 	else if (fmt[op->i] == 'p' || fmt[op->i] == 'P')
-	  ft_spec_ptraddr(op, fmt[op->i]);
+		ft_spec_ptraddr(op, fmt[op->i]);
 	else if (ft_strchr("boxBOX", fmt[op->i]))
-	  ft_spec_base(op, fmt[op->i]);
+		ft_spec_base(op, fmt[op->i]);
 	else if (fmt[op->i] != '\0')
-	  ft_print_invalid_spec(op, fmt[op->i]);
+		ft_print_invalid_spec(op, fmt[op->i]);
 }

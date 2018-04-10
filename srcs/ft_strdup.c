@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 13:46:49 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/09 14:14:08 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:28:56 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:28:58 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdlib.h>
+#include "ft_printf.h"
 
 char	*ft_strdup(const char *s)
 {

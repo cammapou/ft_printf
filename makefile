@@ -19,7 +19,6 @@ SRC =	ft_printf.c \
 		ft_print_char.c \
 		ft_print_str.c \
 		ft_print_d.c \
-		ft_print_invalid.c \
 		ft_print_wchar.c \
 		ft_print_wstr.c \
 		ft_print_p.c \
@@ -42,9 +41,9 @@ SRC =	ft_printf.c \
 		ft_memset.c \
 		ft_strcpy.c \
 		ft_uitoa.c \
-		ft_basetoa.c \
 		ft_print_base.c \
-		ft_strcat.c
+		ft_strcat.c \
+		ft_print_invalide.c
 
 OBJ = $(SRC:.c=.o)
 

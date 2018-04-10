@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/31 11:35:21 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 13:09:41 by cammapou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -159,8 +147,7 @@ char	*ft_strcat(char *dest, const char *src);
 
 
 
-void				ft_get_string_pointer(t_env *op);
-char				*ft_basetoa(uintmax_t number, int base);
+
 void			ft_write_chars(char *string, int base, char conversion[base], uintmax_t number);
 int			ft_count_digits(uintmax_t number, int base);
 void			ft_set_conversion_array(char *array, int base);

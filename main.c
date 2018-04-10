@@ -39,7 +39,7 @@ int	main()
 	/*
 	**  MAIN_TEST
 	*/
-	printf("\n-------TEST hex, oct, dec %%i-------\n");
+	/*printf("\n-------TEST hex, oct, dec %%i-------\n");
 	printf("ret = %d\n", ft_printf("%i    %i     %i\n\n", hex, oct, dec));
 	printf("ret = %d\n", printf("%i    %i     %i\n\n", hex, oct, dec));
 
@@ -85,7 +85,7 @@ int	main()
 
 	printf("\n-------TEST unsigned char %%hhu-------\n");
 	printf("%d\n", ft_printf("salut ca va |%hhu|\n", tk));
-	printf("%d\n", printf("salut ca va |%hhu|\n", tk));
+	printf("%d\n", printf("salut ca va |%hhu|\n", tk));*/
 
 	/*printf("\n-------TEST %%c-------\n");
 	  while (j++ < 126)
@@ -94,7 +94,7 @@ int	main()
 	  printf("%d\n", printf("salut ca va |%c|\n", j));
 	  }*/
 
-	printf("\n-------TEST %%-------\n");
+	/*printf("\n-------TEST %%-------\n");
 	printf("%d\n", ft_printf("\u6211\u53EF\u4EE5\u5199\u5728\u4E2D\u56FD\n"));
 	printf("%d\n", printf("\u6211\u53EF\u4EE5\u5199\u5728\u4E2D\u56FD\n"));
 
@@ -199,8 +199,53 @@ int	main()
 	ft_printf("|%#lx|\n",  0x7ffdffae488c);
 
 	ft_printf("%X\n", 42);
-	printf("%X\n", 42);
+	printf("%X\n", 42);*/
 
+	//ft_printf("%D\n", -1L);
+	ft_printf("|%-05d|\n\n", 42);
+	printf("|%-05d|\n", 42);
+	ft_printf("|% 10.5d|\n", 4242);
+	printf("|% 10.5d|\n", 4242);
+	ft_printf("|%03.2d|\n", 1);
+	printf("|%03.2d|\n", 1);
+
+	ft_printf("|%5d|\n", 42);
+	printf("|%5d|\n", 42);
+	ft_printf("|%05d|\n", 42);
+	printf("|%05d|\n", 42);
+	ft_printf("|%5d|\n", -42);
+	printf("|%5d|\n", -42);
+	ft_printf("|%-5d|\n", -42);
+	printf("|%-5d|\n", -42);
+	ft_printf("|%-05d|\n", -42);
+	printf("|%-05d|\n\n", -42);
+
+	ft_printf("|%10.5d|\n", 4242);
+	printf("|%10.5d|\n", 4242);
+	ft_printf("|%-10.5d|\n", 4242);
+	printf("|%-10.5d|\n", 4242);
+	ft_printf("|%-+10.5d|\n", 4242);
+	printf("|%-+10.5d|\n", 4242);
+	ft_printf("|%03.2d|\n", 0);
+	printf("|%03.2d|\n", 0);
+	ft_printf("|%03.2d|\n", -1);
+	printf("|%03.2d|\n", -1);
+
+	ft_printf("|%4.15d|\n", 42);
+	printf("|%4.15d|\n", 42);
+
+	ft_printf("|%-10.5d|\n", 4242);
+	printf("|%-10.5d|\n", 4242);
+
+	ft_printf("|%+10.5d|\n", 4242);
+	printf("|%+10.5d|\n", 4242);
+	//printf("%D\n", -1L);
+	//ft_printf("% ");
+	//printf("|% |");
+	//ft_printf("% h");
+	//printf("% h");
+	//ft_printf("%jhd", 9223372036854775807);
+	//printf("%jhd", 9223372036854775807);
 	//ft_printf("{%10R}\n");
 	//printf("{%10R}\n");
 	//ft_printf("ft = %U\n", 42);

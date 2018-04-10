@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 11:41:47 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 14:07:19 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:30:20 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:52:20 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_ultoa(unsigned long n)
 {
 	char				*s;
-	unsigned long	nb;
+	unsigned long		nb;
 	int					len;
 
 	len = 1;

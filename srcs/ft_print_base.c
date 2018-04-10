@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 11:34:53 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 11:35:07 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:27:01 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:54:40 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_print_base_pre(t_env *op, char type, long val)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(op->out);
 	if (op->flags.hash && op->out[0] != '\0' && val != 0)
@@ -34,7 +34,7 @@ void	ft_print_base_pre(t_env *op, char type, long val)
 
 void	ft_print_base_width(t_env *op, char type)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(op->out);
 	if (op->flags.hash && (op->out[0] != '\0' && op->out[0] != '0'))
@@ -44,13 +44,13 @@ void	ft_print_base_width(t_env *op, char type)
 	}
 	if (op->flags.press > 0)
 	{
-	if (op->flags.width > 0 && op->flags.neg == 0)
-	{
-		while (op->flags.width > op->flags.press && op->flags.width-- > len)
+		if (op->flags.width > 0 && op->flags.neg == 0)
+		{
+			while (op->flags.width > op->flags.press && op->flags.width-- > len)
+				op->ret += write(1, " ", 1);
+		}
+		while (op->flags.width > op->flags.press && --op->flags.width > len)
 			op->ret += write(1, " ", 1);
-	}
-	while (op->flags.width > op->flags.press && --op->flags.width > len)
-		op->ret += write(1, " ", 1);
 	}
 	else
 	{
@@ -85,7 +85,7 @@ void	ft_check_base_prec(t_env *op, char type)
 	}
 }
 
-void  ft_print_base(t_env *op, char type, long val)
+void	ft_print_base(t_env *op, char type, long val)
 {
 	if (op->flags.zero)
 	{

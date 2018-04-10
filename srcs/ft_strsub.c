@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/04 13:36:41 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/04 13:36:44 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:29:41 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:29:43 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "printf.h"
-#include <stdlib.h>
+#include "ft_printf.h"
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {

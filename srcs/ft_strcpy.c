@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:15:30 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/09 14:22:05 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:28:50 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:28:51 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 char	*ft_strcpy(char *dest, const char *src)
 {

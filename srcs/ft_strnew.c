@@ -5,15 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 15:27:25 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/15 11:33:15 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:29:34 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:29:35 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdlib.h>
-
-void	*ft_memset(void *s, int c, size_t len);
+#include "ft_printf.h"
 
 char	*ft_strnew(size_t size)
 {

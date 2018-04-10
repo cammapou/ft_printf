@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 11:33:08 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 12:47:24 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:25:56 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:32:38 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void	ft_spec_base(t_env *op, char type)
 {
-  long			tmp;
-  unsigned long	val;
+	long			tmp;
+	unsigned long	val;
 
-  val = 0;
-  tmp = va_arg(op->ap, long);
-  if (op->opt.hh == 1)
-  val = (unsigned char)tmp;
-  else if (type == 'O' || op->opt.z == 1 || op->opt.ll == 1 ||
-  op->opt.j == 1 || op->opt.l == 1)
-  val = (unsigned long)tmp;
-  else if (op->opt.h == 1)
-  val = (unsigned short)tmp;
-  else if (op->opt.l == 0 || op->opt.j == 0 || op->opt.ll == 0 ||
-  op->opt.z == 0 || op->opt.h == 0 || op->opt.hh == 0)
-  val = (unsigned int)tmp;
-  (type == 'b' || type == 'B') ? op->out = ft_ultoa_base(val, 2) : 0;
-  (type == 'o' || type == 'O') ? op->out = ft_ultoa_base(val, 8) : 0;
-  (type == 'x' || type == 'X') ? op->out = ft_ultoa_base(val, 16) : 0;
-  if (type == 'b' || type == 'o' || type == 'x')
-  ft_strlower(op->out);
-  op->flags.neg == 1 ? op->flags.zero = 0 : 0;
-  ft_print_base(op, type, (long)val);
+	val = 0;
+	tmp = va_arg(op->ap, long);
+	if (op->opt.hh == 1)
+		val = (unsigned char)tmp;
+	else if (type == 'O' || op->opt.z == 1 || op->opt.ll == 1 ||
+			op->opt.j == 1 || op->opt.l == 1)
+		val = (unsigned long)tmp;
+	else if (op->opt.h == 1)
+		val = (unsigned short)tmp;
+	else if (op->opt.l == 0 || op->opt.j == 0 || op->opt.ll == 0 ||
+			op->opt.z == 0 || op->opt.h == 0 || op->opt.hh == 0)
+		val = (unsigned int)tmp;
+	(type == 'b' || type == 'B') ? op->out = ft_ultoa_base(val, 2) : 0;
+	(type == 'o' || type == 'O') ? op->out = ft_ultoa_base(val, 8) : 0;
+	(type == 'x' || type == 'X') ? op->out = ft_ultoa_base(val, 16) : 0;
+	if (type == 'b' || type == 'o' || type == 'x')
+		ft_strlower(op->out);
+	op->flags.neg == 1 ? op->flags.zero = 0 : 0;
+	ft_print_base(op, type, (long)val);
 }
 
 void	ft_spec_unsint(t_env *op, char type)
@@ -93,21 +93,16 @@ void	ft_spec_int(t_env *op)
 	len = 0;
 	tmp = (long)va_arg(op->ap, long);
 	i = (long long)tmp;
-  if (tmp == LLONG_MIN)
-	{
-    op->out = ft_strdup("-9223372036854775808");
-    //op->ret += write(1, "-9223372036854775808", ft_strlen(op->out));
-  }
-  op->flags.neg ? op->flags.zero = 0 : 0;
-  if (op->opt.hh == 1)
+	if (tmp == LLONG_MIN)
+		op->out = ft_strdup("-9223372036854775808");
+	op->flags.neg ? op->flags.zero = 0 : 0;
+	if (op->opt.hh == 1)
 		op->out = ft_itoa((char)i);
 	else if (op->opt.h == 1)
 		op->out = ft_itoa((short)i);
 	else if (op->opt.l == 1 || op->opt.j == 1 || op->opt.ll == 1)
-    op->out = ft_ulltoa((long)i);
+		op->out = ft_ulltoa((long)i);
 	else
 		op->out = ft_itoa((int)i);
-  //if (tmp == LLONG_MIN)
-  //  exit(EXIT_SUCCESS);
-	   ft_print_digit(op);
+	ft_print_digit(op);
 }

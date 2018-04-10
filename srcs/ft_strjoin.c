@@ -5,17 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 15:19:33 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/16 16:00:41 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:29:04 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:29:06 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdlib.h>
-
-size_t		ft_strlen(const char *s);
-char	*ft_strcpy(char *dest, const char *src);
-char	*ft_strcat(char *dest, const char *src);
+#include "ft_printf.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 17:47:46 by cammapou          #+#    #+#             */
-/*   Updated: 2017/11/24 17:43:08 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:28:40 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:28:41 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
 char	*ft_strchr(const char *s, int c)
 {

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 11:38:26 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/03 12:59:27 by cammapou         ###   ########.fr       */
+/*   Created: 2018/04/10 11:28:10 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:54:03 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_put_wstr_c(t_env *op, char c)
 	op->ret += write(1, &c, 1);
 }
 
-int	ft_put_wstr(t_env *op, wchar_t c)
+int		ft_put_wstr(t_env *op, wchar_t c)
 {
 	if (c <= 0x7F)
 		ft_put_wstr_c(op, c);
@@ -44,8 +44,8 @@ int	ft_put_wstr(t_env *op, wchar_t c)
 
 int		ft_get_wstr_len(wchar_t *wc)
 {
-	int i;
-	int len;
+	int		i;
+	int		len;
 
 	i = -1;
 	len = 0;
@@ -65,7 +65,7 @@ int		ft_get_wstr_len(wchar_t *wc)
 
 void	ft_print_wstr_minus(t_env *op, wchar_t *wc)
 {
-	int i;
+	int		i;
 
 	i = -1;
 	if (op->flags.press > 0)

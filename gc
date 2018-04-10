@@ -1,1 +1,1 @@
-make && gcc -fsanitize=address main.c libftprintf.a && ./a.out
+make && gcc main.c libftprintf.a && ./a.out

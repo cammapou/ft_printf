@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/10 11:27:33 by cammapou          #+#    #+#             */
+/*   Updated: 2018/04/10 11:27:35 by cammapou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_ptraddr_prec(t_env *op)
@@ -35,8 +47,6 @@ void	ft_print_ptraddr_width(t_env *op)
 
 void	ft_print_ptraddr(t_env *op, char type)
 {
-//	if (op->flags.zero && op->flags.press == -1)
-//		op->flags.press = op->flags.width - 2;
 	ft_ptraddr_prec(op);
 	if (type == 'p')
 		ft_strlower(op->out);
