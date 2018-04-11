@@ -42,8 +42,8 @@ SRC =	ft_printf.c \
 		ft_strcpy.c \
 		ft_uitoa.c \
 		ft_print_base.c \
-		ft_strcat.c \
-		ft_print_invalide.c
+		ft_strcat.c 
+
 
 OBJ = $(SRC:.c=.o)
 

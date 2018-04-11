@@ -24,17 +24,23 @@ int		ft_printf(const char *fmt, ...)
 	{
 		if (fmt[op->i] == '%' && fmt[op->i + 1] != '%')
 		{
+			//printf("la0\n");
 			++op->i;
 			ft_option(fmt, op);
 			ft_get_spec(fmt, op);
 		}
 		else if (fmt[op->i] == '%' && fmt[op->i + 1] == '%')
 		{
+			//printf("la1\n");
 			op->ret = op->ret + write(1, "%", 1);
 			op->i = op->i + 2;
 		}
 		else
+		{
+			//printf("la2\n");
 			op->ret = op->ret + write(1, &fmt[op->i++], 1);
+		}
+
 	}
 	va_end(op->ap);
 	return (op->ret);

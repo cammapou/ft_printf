@@ -20,7 +20,7 @@ void	ft_spec_base(t_env *op, char type)
 	val = 0;
 	tmp = va_arg(op->ap, long);
 	if (op->opt.hh == 1)
-		val = (unsigned char)tmp;
+		val = (long)tmp;
 	else if (type == 'O' || op->opt.z == 1 || op->opt.ll == 1 ||
 			op->opt.j == 1 || op->opt.l == 1)
 		val = (unsigned long)tmp;
@@ -41,12 +41,15 @@ void	ft_spec_base(t_env *op, char type)
 void	ft_spec_unsint(t_env *op, char type)
 {
 	long	tmp;
-
-	tmp = 0;
-	if (tmp == LLONG_MIN || tmp == LONG_MIN)
-		op->out = ft_strdup("-9223372036854775808");
+	//op->opt.hh == 1 ? op->opt.h = 0 : 0;
 	tmp = (long long)va_arg(op->ap, long);
-	if (op->opt.z == 1 && type == 'd')
+	if (tmp == LLONG_MIN || tmp == LONG_MIN)
+	{
+		op->out = ft_strdup("-9223372036854775808");
+		write(1, op->out, ft_strlen(op->out));
+		return ;
+	}
+	else if (op->opt.z == 1 && type == 'd')
 		op->out = ft_ltoa(tmp);
 	else if (op->opt.z == 1 || op->opt.l == 1 || op->opt.j == 1)
 		op->out = ft_ultoa((unsigned long)tmp);
@@ -56,10 +59,13 @@ void	ft_spec_unsint(t_env *op, char type)
 		op->out = ft_ultoa((unsigned short)tmp);
 	else if (op->opt.hh == 1)
 		op->out = ft_ultoa((unsigned char)tmp);
+	else if (type == 'U')
+		op->out =ft_ultoa((unsigned long)tmp);
 	else if ((op->opt.l == 0 || op->opt.j == 0 || op->opt.ll == 0 ||
 		op->opt.z == 0 || op->opt.h == 0 || op->opt.hh == 0) && type != 'U')
-		op->out = ft_ultoa((unsigned int)tmp);
+		op->out = ft_ulltoa((long long)tmp);
 	ft_print_digit(op);
+
 }
 
 void	ft_spec_char(t_env *op, char type)
@@ -93,10 +99,15 @@ void	ft_spec_int(t_env *op)
 	len = 0;
 	tmp = (long)va_arg(op->ap, long);
 	i = (long long)tmp;
-	if (tmp == LLONG_MIN)
-		op->out = ft_strdup("-9223372036854775808");
+	op->opt.j == 1 ? op->opt.h = 0 : 0;
 	op->flags.neg ? op->flags.zero = 0 : 0;
-	if (op->opt.hh == 1)
+	if (tmp == LLONG_MIN || tmp == LONG_MIN)
+	{
+		op->out = ft_strdup("-9223372036854775808");
+		write(1, op->out, ft_strlen(op->out));
+		return ;
+	}
+	else if (op->opt.hh == 1)
 		op->out = ft_itoa((char)i);
 	else if (op->opt.h == 1)
 		op->out = ft_itoa((short)i);

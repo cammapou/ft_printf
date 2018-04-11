@@ -93,7 +93,7 @@ void	ft_print_digit_sign(t_env *op);
 void	ft_print_wchar(t_env *op, wchar_t ws);
 void	ft_print_wchar_minus(t_env *op, wchar_t ws);
 void	ft_put_wc(t_env *op, wchar_t c);
-void	ft_put_wchar(char c);
+void	ft_put_wchar(t_env *op, char c);
 /*
 **				wchar_str
 */

@@ -19,7 +19,7 @@ void	ft_print_width(t_env *op)
 	len = ft_strlen(op->out);
 	while (op->flags.width-- > len)
 	{
-		if (op->flags.zero == 1)
+		if (op->flags.zero == 1 && op->flags.neg == 0)
 			op->ret = op->ret + write(1, "0", 1);
 		else
 			op->ret = op->ret + write(1, " ", 1);
@@ -35,6 +35,7 @@ void	ft_print_null_str(t_env *op)
 void	ft_print_str(t_env *op)
 {
 	char	*tmp;
+
 
 	if (op->flags.press > 0 && op->flags.press < (int)ft_strlen(op->out))
 	{

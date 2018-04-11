@@ -15,20 +15,24 @@
 void	ft_spec_wchar(t_env *op, char type)
 {
 	wchar_t		*wstr;
-	char		ws;
+	wchar_t		ws;
 
 	if (type == 's' || type == 'S')
 	{
 		wstr = va_arg(op->ap, wchar_t*);
-		ft_print_wstr(op, wstr);
 		if (wstr == NULL)
+		{
 			ft_print_null_str(op);
+			return ;
+		}
+		ft_print_wstr(op, wstr);
 	}
 	if (type == 'c' || type == 'C')
 	{
+
 		ws = va_arg(op->ap, wchar_t);
 		if (ws == 0)
-			ft_print_wchar(op, ws);
+			write(1, "\0", 2);
 		ft_print_wchar(op, ws);
 	}
 }

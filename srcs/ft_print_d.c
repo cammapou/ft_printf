@@ -23,8 +23,7 @@ void	ft_print_digit_width(t_env *op)
 	int		len;
 
 	len = (int)ft_strlen(op->out);
-	//printf("out = %s\n", op->out);
-	if (op->flags.width && op->flags.neg) //|| op->flags.plus + op->flags.space + op->flags.neg >= 1)
+	if ((op->flags.width && op->flags.neg) || op->flags.plus)
 	{
 		//printf("ici1");
 		while (--op->flags.width > len)
@@ -32,7 +31,6 @@ void	ft_print_digit_width(t_env *op)
 	}
 	else if (op->flags.press > 0 && op->flags.width > 0 && !op->flags.zero && op->flags.space)
 	{
-		//printf("ici2");
 		if (op->flags.press)
 		{
 			while (--op->flags.width > op->flags.press)
@@ -40,7 +38,7 @@ void	ft_print_digit_width(t_env *op)
 				op->ret += write(1, "0", 1);
 		}
 	}
-	else if (op->flags.press > 0)
+	else if ((op->flags.press > 0 && op->flags.plus == 0) || op->out[0] == '-')
 	{
 		//printf("ici3");
 		if (op->flags.width)
@@ -98,7 +96,9 @@ void	ft_check_digit_prec(t_env *op)
 void	ft_print_digit(t_env *op)
 {
 	op->flags.neg == 1 ? op->flags.zero = 0 : 0;
-	//printf("zero = %d\n", op->flags.zero);
+	//op->flags.neg == 1 ? op->flags.plus = 0 : 0;
+	op->out[0] == '-' ? op->flags.space = 0 : 0;
+	//op->flags.plus == 1 ? op->flags.zero = 0 : 0;
 	if (op->flags.zero)
 	{
 		//printf("la01\n");
@@ -114,6 +114,12 @@ void	ft_print_digit(t_env *op)
 		ft_print_digit_sign(op);
 		op->ret += write(1, op->out, ft_strlen(op->out));
 		ft_print_digit_width(op);
+	}
+	else if (op->flags.plus)
+	{
+		ft_print_digit_width(op);
+		ft_print_digit_sign(op);
+		op->ret += write(1, op->out, ft_strlen(op->out));
 	}
 	else
 	{
