@@ -34,6 +34,7 @@ int	main()
 	char				null = '\0';
 	char				*strnull = "NULL";
 	int					zero = 0;
+
 	//wchar_t 			tt = 0xFFFF;
 	//int i = 1;
 	//char	*z = "bonjour";
@@ -309,6 +310,15 @@ int	main()
 	printf("%hhO, %hhO\n", 0, USHRT_MAX);
 	ft_printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
 	printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
+
+	ft_printf("%hhX\n", 4294967296);
+	printf("%hhX\n", 4294967296);
+
+	ft_printf("@moulitest: |%#.x %#.0x|\n", 0, 0);
+	printf("@moulitest: |%#.x %#.0x|\n", 0, 0);
+
+	ft_printf("%5.2s is a string\n", "this");
+	printf("%5.2s is a string\n", "this");
 	//ft_printf("%D\n", 0L);
 	/*printf("%D\n", 0L);
 	ft_printf("%D\n", 1L);
@@ -453,6 +463,9 @@ int	main()
   	{
     	printf("%i est pair.\n", i);
   	}*/
+
+
+	//free(op);
 	return (0);
 }
 //printf("|6. %X|\n", 255);

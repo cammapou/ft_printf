@@ -26,7 +26,8 @@ char	*ft_ltoa_base(long n, int base)
 		nb /= base;
 		++len;
 	}
-	s = (char*)malloc(sizeof(char) * (len + 1));
+	if (!(s = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	s[len] = '\0';
 	n < 0 ? *s = '-' : 0;
 	n < 0 ? n = -n : 0;

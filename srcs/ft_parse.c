@@ -14,9 +14,9 @@
 
 void	ft_initoption(t_option *opt)
 {
-	ft_bzero(&opt, sizeof(opt));
-	if (!(opt = (t_option*)malloc(sizeof(t_option))))
-		return ;
+	//ft_bzero(&opt, sizeof(opt));
+	//if (!(opt = (t_option*)malloc(sizeof(t_option))))
+	//	return ;
 	opt->h = 0;
 	opt->hh = 0;
 	opt->l = 0;
@@ -48,23 +48,25 @@ void	ft_height(const char *fmt, t_env *op)
 		op->opt.z = 1;
 }
 
-void	ft_initflag(t_flags *flags)
+void	ft_initflag(t_flags flags)
 {
-	if (!(flags = (t_flags*)malloc(sizeof(t_flags))))
-		return ;
-	flags->neg = 0;
-	flags->plus = 0;
-	flags->hash = 0;
-	flags->zero = 0;
-	flags->space = 0;
-	flags->width = 0;
-	flags->press = -1;
-	ft_bzero(flags, sizeof(flags));
+	//if (!(flags = (t_flags*)malloc(sizeof(t_flags))))
+	//	return ;
+
+	flags.neg = 0;
+	flags.plus = 0;
+	flags.hash = 0;
+	flags.zero = 0;
+	flags.space = 0;
+	flags.width = 0;
+	flags.press = -1;
+
 }
 
 void	ft_option(const char *fmt, t_env *op)
 {
-	ft_initflag(&op->flags);
+	//ft_bzero(&op->flags, sizeof(op->flags));
+	ft_initflag(op->flags);
 	if (ft_strchr(" #+-0hjlz.123456789", fmt[op->i]))
 	{
 		while (ft_strchr(" #+-0hjlz", fmt[op->i]))
@@ -83,8 +85,9 @@ void	ft_option(const char *fmt, t_env *op)
 			while (ft_isdigit(fmt[++op->i]))
 				op->flags.press = (op->flags.press * 10) + fmt[op->i] - 48;
 		else if (ft_strchr(" #+-0hjlz.123456789", fmt[op->i]))
-			return (ft_option(fmt, op));
+				return (ft_option(fmt, op));
 	}
+
 }
 
 void	ft_get_spec(const char *fmt, t_env *op)

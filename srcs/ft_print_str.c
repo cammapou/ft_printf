@@ -36,7 +36,6 @@ void	ft_print_str(t_env *op)
 {
 	char	*tmp;
 
-
 	if (op->flags.press > 0 && op->flags.press < (int)ft_strlen(op->out))
 	{
 		tmp = ft_strsub(op->out, 0, (op->flags.press));

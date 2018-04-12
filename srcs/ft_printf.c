@@ -14,34 +14,32 @@
 
 int		ft_printf(const char *fmt, ...)
 {
-	t_env *op;
+	t_env op;
 
 	ft_bzero(&op, sizeof(op));
-	if (!(op = (t_env*)malloc(sizeof(t_env))))
-		return (0);
-	va_start(op->ap, fmt);
-	while (fmt[op->i])
+	va_start(op.ap, fmt);
+	while (fmt[op.i])
 	{
-		if (fmt[op->i] == '%' && fmt[op->i + 1] != '%')
+		if (fmt[op.i] == '%' && fmt[op.i + 1] != '%')
 		{
-			//printf("la0\n");
-			++op->i;
-			ft_option(fmt, op);
-			ft_get_spec(fmt, op);
+			++op.i;
+			ft_option(fmt, &op);
+			ft_get_spec(fmt, &op);
 		}
-		else if (fmt[op->i] == '%' && fmt[op->i + 1] == '%')
+		else if (fmt[op.i] == '%' && fmt[op.i + 1] == '%')
 		{
 			//printf("la1\n");
-			op->ret = op->ret + write(1, "%", 1);
-			op->i = op->i + 2;
+			op.ret = op.ret + write(1, "%", 1);
+			op.i = op.i + 2;
+
 		}
 		else
 		{
 			//printf("la2\n");
-			op->ret = op->ret + write(1, &fmt[op->i++], 1);
+			//printf("fmt = %c\n", fmt[op.i]);
+			op.ret = op.ret + write(1, &fmt[op.i++], 1);
 		}
-
 	}
-	va_end(op->ap);
-	return (op->ret);
+	va_end(op.ap);
+	return (op.ret);
 }

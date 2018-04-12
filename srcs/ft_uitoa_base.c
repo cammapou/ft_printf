@@ -25,7 +25,8 @@ char	*ft_uitoa_base(unsigned int n, int base)
 		nb /= base;
 		++len;
 	}
-	s = (char*)malloc(sizeof(char) * (len + 1));
+	if (!(s = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	s[len] = '\0';
 	while (n >= (unsigned)base)
 	{

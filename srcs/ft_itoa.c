@@ -26,7 +26,8 @@ char	*ft_itoa(int n)
 		nb /= 10;
 		++len;
 	}
-	s = (char*)malloc(sizeof(char) * (len + 1));
+	if (!(s = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	s[len] = '\0';
 	n < 0 ? *s = '-' : 0;
 	nb = n < 0 ? -(long)n : n;

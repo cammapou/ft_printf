@@ -20,7 +20,7 @@ void	ft_spec_base(t_env *op, char type)
 	val = 0;
 	tmp = va_arg(op->ap, long);
 	if (op->opt.hh == 1)
-		val = (long)tmp;
+		val = (unsigned short)tmp;
 	else if (type == 'O' || op->opt.z == 1 || op->opt.ll == 1 ||
 			op->opt.j == 1 || op->opt.l == 1)
 		val = (unsigned long)tmp;

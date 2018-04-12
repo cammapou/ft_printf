@@ -53,7 +53,7 @@ int		ft_printf(const char *format, ...);
 **				ft_parse
 */
 void	ft_option(const char *format, t_env *op);
-void	ft_initflag(t_flags *flags);
+void	ft_initflag(t_flags flags);
 void	ft_height(const char *format, t_env *op);
 void	ft_initoption(t_option *opt);
 void	ft_get_spec(const char *format, t_env *op);
