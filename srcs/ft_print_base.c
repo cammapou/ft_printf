@@ -24,6 +24,9 @@ void	ft_print_base_pre(t_env *op, char type, long val)
 		op->ret += (type == 'X') ? write(1, "0X", 2) : 0;
 		type == 'a' || type == 'A' ? op->flags.width -= 2 : 0;
 	}
+else if ((type == 'o' || type == 'O') && op->flags.hash && op->flags.press >= 0)
+	op->ret += write(1, "0", 1);
+else if (type == 'a' || type == 'A')
 	else if (op->flags.neg)
 		while (op->flags.press-- > len)
 			op->ret += write(1, "0", 1);
