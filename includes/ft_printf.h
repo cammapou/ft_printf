@@ -61,11 +61,11 @@ void	ft_get_spec(const char *format, t_env *op);
 **				ft_get_spec
 */
 void	ft_spec_char(t_env *op, char type);
-void  ft_spec_int(t_env *op);
+int  ft_spec_int(t_env *op);
 void	ft_spec_unsint(t_env *op, char type);
 void	ft_spec_wchar(t_env *op, char type);
 void	ft_spec_percent(t_env *op);
-void	ft_spec_ptraddr(t_env *op, char type);
+int	ft_spec_ptraddr(t_env *op, char type);
 void	ft_spec_base(t_env *op, char type);
 /*
 **				ft_print_str
@@ -142,8 +142,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_strlower(char *s);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strcat(char *dest, const char *src);
-
-
+void	ft_putendl(char const *s);
+void	ft_putstr(char const *s);
+void	ft_putchar(char c);
 
 
 

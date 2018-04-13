@@ -42,7 +42,10 @@ SRC =	ft_printf.c \
 		ft_strcpy.c \
 		ft_uitoa.c \
 		ft_print_base.c \
-		ft_strcat.c 
+		ft_strcat.c \
+		ft_putendl.c \
+		ft_putstr.c \
+		ft_putchar.c
 
 
 OBJ = $(SRC:.c=.o)

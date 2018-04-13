@@ -32,18 +32,27 @@ void	ft_spec_wchar(t_env *op, char type)
 
 		ws = va_arg(op->ap, wchar_t);
 		if (ws == 0)
+		{
 			write(1, "\0", 2);
+		}
 		ft_print_wchar(op, ws);
 	}
 }
 
-void	ft_spec_ptraddr(t_env *op, char type)
+int	ft_spec_ptraddr(t_env *op, char type)
 {
 	long			value;
 
 	value = (long)va_arg(op->ap, void*);
+	if (value == 0 && op->flags.press == 0)
+	{
+		op->ret += write(1, "0x", 2);
+		op->i++;
+		return(0);
+	}
 	op->out = ft_ultoa_base(value, 16);
 	ft_print_ptraddr(op, type);
+	return(0);
 }
 
 void	ft_spec_percent(t_env *op)

@@ -38,6 +38,7 @@ int		ft_printf(const char *fmt, ...)
 			//printf("la2\n");
 			//printf("fmt = %c\n", fmt[op.i]);
 			op.ret = op.ret + write(1, &fmt[op.i++], 1);
+			//free(&op);
 		}
 	}
 	va_end(op.ap);

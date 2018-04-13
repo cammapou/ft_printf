@@ -90,7 +90,7 @@ void	ft_spec_char(t_env *op, char type)
 	}
 }
 
-void	ft_spec_int(t_env *op)
+int	ft_spec_int(t_env *op)
 {
 	long	tmp;
 	long	i;
@@ -99,13 +99,18 @@ void	ft_spec_int(t_env *op)
 	len = 0;
 	tmp = (long)va_arg(op->ap, long);
 	i = (long long)tmp;
-	op->opt.j == 1 ? op->opt.h = 0 : 0;
-	op->flags.neg ? op->flags.zero = 0 : 0;
+	if (tmp == 0)
+	{
+		op->ret += write(1, "0", 1);
+		op->i++;
+		return(0);
+	}
 	if (tmp == LLONG_MIN || tmp == LONG_MIN)
 	{
 		op->out = ft_strdup("-9223372036854775808");
 		write(1, op->out, ft_strlen(op->out));
-		return ;
+		op->i++;
+		return (0);
 	}
 	else if (op->opt.hh == 1)
 		op->out = ft_itoa((char)i);
@@ -115,5 +120,7 @@ void	ft_spec_int(t_env *op)
 		op->out = ft_ulltoa((long)i);
 	else
 		op->out = ft_itoa((int)i);
-	ft_print_digit(op);
+	//if (tmp)
+		ft_print_digit(op);
+		return(0);
 }
