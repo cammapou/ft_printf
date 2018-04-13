@@ -19,6 +19,14 @@ void	ft_spec_base(t_env *op, char type)
 
 	val = 0;
 	tmp = va_arg(op->ap, long);
+	//printf("hash=%d\n", op->flags.hash);
+	//printf("zero=%d\n", op->flags.zero);
+	/*if (tmp == 0 && op->flags.hash == 1)
+	{
+		write(1, "\0", 1);
+		op->i++;
+		return ;
+	}*/
 	if (op->opt.hh == 1)
 		val = (unsigned short)tmp;
 	else if (type == 'O' || op->opt.z == 1 || op->opt.ll == 1 ||
@@ -43,10 +51,17 @@ void	ft_spec_unsint(t_env *op, char type)
 	long	tmp;
 	//op->opt.hh == 1 ? op->opt.h = 0 : 0;
 	tmp = (long long)va_arg(op->ap, long);
+	if (tmp == 0)
+	{
+		op->ret += write(1, "0", 1);
+		op->i++;
+		return ;
+	}
 	if (tmp == LLONG_MIN || tmp == LONG_MIN)
 	{
 		op->out = ft_strdup("-9223372036854775808");
-		write(1, op->out, ft_strlen(op->out));
+		op->ret += write(1, op->out, ft_strlen(op->out));
+		op->i++;
 		return ;
 	}
 	else if (op->opt.z == 1 && type == 'd')
@@ -63,7 +78,7 @@ void	ft_spec_unsint(t_env *op, char type)
 		op->out =ft_ultoa((unsigned long)tmp);
 	else if ((op->opt.l == 0 || op->opt.j == 0 || op->opt.ll == 0 ||
 		op->opt.z == 0 || op->opt.h == 0 || op->opt.hh == 0) && type != 'U')
-		op->out = ft_ulltoa((long long)tmp);
+		op->out = ft_ulltoa((unsigned int)tmp);
 	ft_print_digit(op);
 
 }
@@ -90,27 +105,29 @@ void	ft_spec_char(t_env *op, char type)
 	}
 }
 
-int	ft_spec_int(t_env *op)
+void	ft_spec_int(t_env *op)
 {
 	long	tmp;
 	long	i;
 	int		len;
 
 	len = 0;
+	//printf("%s\n", op->out);
 	tmp = (long)va_arg(op->ap, long);
 	i = (long long)tmp;
+
 	if (tmp == 0)
 	{
 		op->ret += write(1, "0", 1);
 		op->i++;
-		return(0);
+		return ;
 	}
 	if (tmp == LLONG_MIN || tmp == LONG_MIN)
 	{
 		op->out = ft_strdup("-9223372036854775808");
-		write(1, op->out, ft_strlen(op->out));
+		op->ret += write(1, op->out, ft_strlen(op->out));
 		op->i++;
-		return (0);
+		return ;
 	}
 	else if (op->opt.hh == 1)
 		op->out = ft_itoa((char)i);
@@ -122,5 +139,4 @@ int	ft_spec_int(t_env *op)
 		op->out = ft_itoa((int)i);
 	//if (tmp)
 		ft_print_digit(op);
-		return(0);
 }

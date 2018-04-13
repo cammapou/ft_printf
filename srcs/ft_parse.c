@@ -87,7 +87,6 @@ void	ft_option(const char *fmt, t_env *op)
 		else if (ft_strchr(" #+-0hjlz.123456789", fmt[op->i]))
 				return (ft_option(fmt, op));
 	}
-
 }
 
 void	ft_get_spec(const char *fmt, t_env *op)

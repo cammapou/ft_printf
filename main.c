@@ -320,6 +320,9 @@ int	main()
 	printf("%d\n",printf("9|%+10.5d|\n", 4242));
 	printf("%d\n",ft_printf("10|%03.2d|\n", -1));
 	printf("%d\n\n",printf("10|%03.2d|\n", -1));
+	printf("%d\n",ft_printf("11|%-5.10o|\n", 2500));
+	printf("%d\n",printf("11|%-5.10o|\n\n\n", 2500));
+
 
 	ft_printf("1|%-+10.5d|\n", 4242);
 	printf("1|%-+10.5d|\n", 4242);
@@ -346,10 +349,20 @@ int	main()
 	printf("8|%hd|\n", -32769);
 	ft_printf("9|%zd|\n", -0);
 	printf("9|%zd|\n\n", -0);
-	printf("%d\n", ft_printf("10|%.0p, %.p|\n", 0, 0));
+	ft_printf("|%-10.5o|\n", 2500);
+	printf("|%-10.5o|\n\n", 2500);
+
+	//printf("%d\n", ft_printf("|%5.2x|\n", 5427));
+	// /printf("%d", printf("|%5.2x|\n\n\n", 5427));
+
+	printf("%d\n", ft_printf("%lld\n", -9223372036854775808));
+	printf("%d\n", printf("%lld\n", -9223372036854775808));
+
+
+	printf("%d\n", ft_printf("10|%.0p, %.p|\n", 1, 1));
 	printf("%d\n", printf("10|%.0p, %.p|\n", 0, 0));
-	printf("%d\n", ft_printf("%.5p\n", 0));
-	printf("%d\n", printf("%.5p\n", 0));
+	printf("%d\n", ft_printf("%.5p\n", 1));
+	printf("%d\n", printf("%.5p\n", 1));
 	printf("%d\n",ft_printf("%u\n", -1));
 	printf("%d\n",printf("%u\n", -1));
 	printf("%d\n",ft_printf("%u\n", 4294967296));
@@ -362,6 +375,18 @@ int	main()
 	printf("%d\n",printf("%+u\n", 4294967295));
 	printf("%d\n",ft_printf("%hU\n", 4294967296));
 	printf("%d\n",ft_printf("%hU\n", 4294967296));
+	printf("%d\n", ft_printf("|@moulitest: %#.x %#.0x|\n", 0, 0));
+	printf("%d\n", printf("|@moulitest: %#.x %#.0x|\n", 0, 0));
+	printf("%d\n", ft_printf("%#x\n", 0));
+	printf("%d\n", printf("%#x\n", 0));
+	ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
+	printf("@moulitest: %5.x %5.0x\n\n", 0, 0);
+
+	ft_printf("%u\n", 4294967296);
+	printf("%u\n", 4294967296);
+	ft_printf("%+d\n", 0);
+	printf("%+d\n\n", 0);
+
 	//ft_printf("%D\n", 0L);
 	/*printf("%D\n", 0L);
 	ft_printf("%D\n", 1L);
@@ -511,13 +536,3 @@ int	main()
 	//free(op);
 	return (0);
 }
-//printf("|6. %X|\n", 255);
-//printf("|7. %#x|\n", 130);
-//printf("|3. %030.13d|\n", 123456);
-//ft_printf("oeufs", NULL);
-//printf ("Differentes bases : %d %x %o %#x %#o \n", 100, 100, 100, 100, 100);
-//ft_printf("oui", "et", "toi", NULL);
-//printf("printf=  |%30.13d|\n", 123456);
-//printf("%d", INT_MAX + 42);
-//ft_printf("%4.15s", "I am 42");
-//ft_printf("%4.15s", "42 is the answer");
