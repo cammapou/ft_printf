@@ -25,16 +25,17 @@ void	ft_print_base_pre(t_env *op, char type, long val)
 		type == 'a' || type == 'A' ? op->flags.width -= 2 : 0;
 	}
 	else if ((type == 'o' || type == 'O') && op->flags.hash && op->flags.press >= 0)
-		op->ret += write(1, "0", 1);
-	else if (type == 'a' || type == 'A')
-	{
-		 if (op->flags.neg)
-			while (op->flags.press-- > len)
-				op->ret += write(1, "0", 1);
-		else if (op->flags.press > 0)
-			while (op->flags.press-- > len)
-				op->ret += write(1, "0", 1);
-	}
+ 			op->ret += write(1, "0", 1);
+ 	else if (type == 'a' || type == 'A')
+ 	{
+ 		if (op->flags.plus || op->flags.space)
+ 		{
+ 			op->ret += op->flags.space ? write(1, " ", 1) : write(1, "+", 1);
+ 			op->flags.width--;
+ 		}
+ 		op->ret += type == 'a' ? write(1, "0x", 2) : write(1, "0X", 2);
+ 		op->flags.width -= 2;
+ 	}
 }
 
 void	ft_print_base_width(t_env *op, char type)
