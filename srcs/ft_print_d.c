@@ -14,11 +14,12 @@
 
 void	ft_print_digit_sign(t_env *op)
 {
-	if ((op->flags.plus || op->flags.space) && op->out[0] != '-')
+	if ((op->flags.plus && op->out[0] != '-') || (op->flags.space && op->flags.width < 0))
 	{
 		//	printf("la11");
 		op->ret += (op->flags.plus == 1 ? write(1, "+", 1) : write(1, " ", 1));
 	}
+	//if (op->flags.space)
 }
 
 void	ft_print_digit_width(t_env *op)
@@ -26,11 +27,14 @@ void	ft_print_digit_width(t_env *op)
 	int		len;
 
 	len = (int)ft_strlen(op->out);
-
 	if (op->flags.width && op->flags.neg == 0 && op->flags.plus == 0
 		&& op->flags.press == 0 && op->flags.zero == 0)
 		while (--op->flags.width >= len)
 			op->ret += write(1, " ", 1);
+	else if (op->flags.width && op->flags.neg == 0 && op->flags.plus == 0
+				&& op->flags.press == 0 && op->flags.zero == 1)
+				while (--op->flags.width >= len)
+					op->ret += (op->flags.zero == 1 ? write(1, "0", 1) : write(1, " ", 1));
 	else if (op->flags.neg && op->flags.plus == 0)
 		while (op->flags.width > op->flags.press && op->flags.width-- > len)
 			op->ret += (op->flags.zero == 1 ? write(1, "0", 1) : write(1, " ", 1));
@@ -81,40 +85,72 @@ void	ft_check_digit_prec(t_env *op)
 
 void	ft_print_digit(t_env *op)
 {
-	// /op->flags.neg == 1 ? op->flags.plus = 0 : 0;
-	//op->flags.neg == 1 ? op->flags.zero = 0 : 0;
+	int len;
+
+	len = (int)ft_strlen(op->out);
 	op->opt.j == 1 ? op->opt.h = 0 : 0;
 	op->flags.neg ? op->flags.zero = 0 : 0;
 	op->out[0] == '-' ? op->flags.plus = 0 : 0;
-	op->flags.press > 0 ? op->flags.zero = 0 : 0;
-	if (op->out[0] == '-' && op->flags.neg)// && op->flags.plus == 0)
+	op->flags.press > 0 && op->out[0] != '-' ? op->flags.zero = 0 : 0;
+
+	if (op->out[0] == '-' && op->flags.neg == 0)
+	{
+	//	printf ("la\n");
+		if (op->flags.width && op->flags.zero == 0)
+			while (op->flags.width-- > len)
+				op->ret += write(1, " ", 1);
+
+		ft_check_digit_prec(op);
+		if(op->flags.zero && op->flags.press == 0)
+			while (op->flags.width > op->flags.press && op->flags.width-- > len)
+			op->ret += (op->flags.zero == 1 ? write(1, "0", 1) : write(1, " ", 1));
+		op->ret += write(1, op->out, ft_strlen(op->out));
+
+	}
+	else if (op->out[0] == '-' && op->flags.neg)  // && op->flags.plus == 0)
 	{
 		//ft_check_digit_prec(op);
-		//printf("la01\n");
+
+	//	printf("la01\n");
 		ft_print_digit_sign(op);
 		op->ret += write(1, op->out, ft_strlen(op->out));
 		ft_print_digit_width(op);
 	}
 	else if (op->flags.neg)
 	{
-	//	printf("la02\n");
+		//printf("la02\n");
 		ft_check_digit_prec(op);
 		ft_print_digit_sign(op);
 		op->ret += write(1, op->out, ft_strlen(op->out));
 		ft_print_digit_width(op);
 	}
-	else if (op->flags.zero || op->flags.plus)
+	else if ((op->flags.plus && op->flags.press > 0) || op->out[0] == '-')
 	{
-		//printf("la02\n");
+		//printf("la03\n");
+
 		ft_check_digit_prec(op);
+
 		ft_print_digit_width(op);
 		ft_print_digit_sign(op);
+		op->ret += write(1, op->out, ft_strlen(op->out));
+
+	}
+	else if (op->flags.zero)
+	{
+		//printf("la05\n");
+		//if (op->out[0] == '-')
+		//	write(1, "0", 1);
+		ft_check_digit_prec(op);
+		ft_print_digit_sign(op);
+		ft_print_digit_width(op);
+
 		op->ret += write(1, op->out, ft_strlen(op->out));
 	}
 
 	else
 	{
-	//	printf("la04\n");
+		//printf("la04\n");
+		//ft_check_digit_prec(op);
 		ft_print_digit_sign(op);
 		ft_print_digit_width(op);
 		op->ret += write(1, op->out, ft_strlen(op->out));

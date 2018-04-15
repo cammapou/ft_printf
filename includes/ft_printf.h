@@ -88,6 +88,13 @@ void	ft_check_digit_sign(t_env *op);
 void	ft_print_digit_width(t_env *op);
 void	ft_print_digit_sign(t_env *op);
 /*
+**				ft_print_unsigned
+*/
+void	ft_print_digit_u(t_env *op);
+void	ft_check_digit_prec_u(t_env *op);
+void	ft_print_digit_width_u(t_env *op);
+
+/*
 **				wchar_c
 */
 void	ft_print_wchar(t_env *op, wchar_t ws);

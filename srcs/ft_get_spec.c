@@ -71,7 +71,7 @@ void	ft_spec_unsint(t_env *op, char type)
 	else if (op->opt.ll == 1)
 		op->out = ft_ultoa((unsigned long long)tmp);
 	else if (op->opt.h == 1)
-		op->out = ft_ultoa((unsigned short)tmp);
+		op->out = ft_ultoa((unsigned long)tmp);
 	else if (op->opt.hh == 1)
 		op->out = ft_ultoa((unsigned char)tmp);
 	else if (type == 'U')
@@ -79,7 +79,7 @@ void	ft_spec_unsint(t_env *op, char type)
 	else if ((op->opt.l == 0 || op->opt.j == 0 || op->opt.ll == 0 ||
 		op->opt.z == 0 || op->opt.h == 0 || op->opt.hh == 0) && type != 'U')
 		op->out = ft_ulltoa((unsigned int)tmp);
-	ft_print_digit(op);
+	ft_print_digit_u(op);
 
 }
 
@@ -116,8 +116,10 @@ void	ft_spec_int(t_env *op)
 	tmp = (long)va_arg(op->ap, long);
 	i = (long long)tmp;
 
-	if (tmp == 0)
+	if (tmp == 0 && op->flags.press <= 0)
 	{
+		if (op->flags.plus == 1)
+			op->ret += write(1, "+", 1);
 		op->ret += write(1, "0", 1);
 		op->i++;
 		return ;
@@ -137,6 +139,5 @@ void	ft_spec_int(t_env *op)
 		op->out = ft_ulltoa((long)i);
 	else
 		op->out = ft_itoa((int)i);
-	//if (tmp)
 		ft_print_digit(op);
 }

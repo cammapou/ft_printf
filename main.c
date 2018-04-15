@@ -387,6 +387,80 @@ int	main()
 	ft_printf("%+d\n", 0);
 	printf("%+d\n\n", 0);
 
+	printf("%d",ft_printf("%+d\n", 0));
+		printf("%d",printf("%+d\n\n", 0));
+
+	ft_printf("|%hU|\n", 4294967295);
+	printf("|%hU|\n\n", 4294967295);
+	ft_printf("2|%+u|\n", 4294967295);
+	printf("2|%+u|\n", 4294967295);
+	ft_printf("3|% u|\n", 4294967295);
+	printf("3|% u\n|", 4294967295);
+	ft_printf("4|%015u|\n", 4294967295);
+	printf("4|%015u|\n\n\n", 4294967295);
+
+
+	printf("%d\n",ft_printf("|% 10.5d|\n", 4242));
+	printf("%d\n", printf("|% 10.5d|\n", 4242));
+	printf("%d\n",ft_printf("|%03.2d|\n", 0));
+	printf("%d\n",printf("|%03.2d|\n", 0));
+	printf("%d\n",ft_printf("|%03.2d|\n", -1));
+	printf("%d\n",printf("|%03.2d|\n\n", -1));
+
+
+
+
+	ft_printf("|%+10.5d|\n", 4242);
+	 printf("|%+10.5d|\n\n", 4242);
+
+
+	 ft_printf("|%05d|\n", 42);
+ 	printf("|%05d|\n", 42);
+
+	 ft_printf("|%0+5d|\n", 42);
+		printf("|%0+5d|\n\n", 42);
+
+		ft_printf("|%05d|\n", -42);
+ 	 printf("|%05d|\n", -42);
+ 	 ft_printf("|%0+5d|\n", -42);
+ 	 printf("|%0+5d|\n", -42);
+	 ft_printf("|%5d|\n", -42);
+	 printf("|%5d|\n", -42);
+	 ft_printf("|%-5d|\n", -42);
+	 printf("|%-5d|\n", -42);
+	 ft_printf("|%-05d|\n", -42);
+	 printf("|%-05d|\n\n", -42);
+
+	 ft_printf("|%+10.5d|\n", 4242);
+	 printf("|%+10.5d|\n", 4242);
+	 ft_printf("|%03.2d|\n", -1);
+	 printf("|%03.2d|\n", -1);
+	 ft_printf("|%-15u|\n", 4294967295);
+	 printf("|%-15u|\n", 4294967295);
+	 ft_printf("|%+10.5d|\n", 4242);
+		printf("|%+10.5d|\n\n", 4242);
+
+
+	ft_printf("@moulitest: %.10d\n", -42);
+	printf("@moulitest: %.10d\n", -42);
+	ft_printf("@moulitest: %.d %.0d\n", 0, 0);
+	printf("@moulitest: %.d %.0d\n", 0, 0);
+	ft_printf("@moulitest: %5.d %5.0d\n", 0, 0);
+	printf("@moulitest: %5.d %5.0d\n", 0, 0);
+	ft_printf("%-15u\n", 4294967295);
+	printf("%-15u\n", 4294967295);
+	ft_printf("%015u\n", 4294967295);
+	printf("%015u\n", 4294967295);
+	ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
+	printf("@moulitest: %5.o %5.0o\n", 0, 0);
+	ft_printf("@moulitest: %.o %.0o\n", 0, 0);
+	printf("@moulitest: %.o %.0o\n", 0, 0);
+	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
+	printf("@moulitest: %#.x %#.0x\n", 0, 0);
+	ft_printf("@moulitest: %.x %.0x\n", 0, 0);
+	printf("@moulitest: %.x %.0x\n", 0, 0);
+	ft_printf("@moulitest: %5.x %5.0x\n\n", 0, 0);
+	printf("@moulitest: %5.x %5.0x\n\n", 0, 0);
 	//ft_printf("%D\n", 0L);
 	/*printf("%D\n", 0L);
 	ft_printf("%D\n", 1L);

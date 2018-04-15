@@ -86,6 +86,7 @@ void	ft_option(const char *fmt, t_env *op)
 				op->flags.press = (op->flags.press * 10) + fmt[op->i] - 48;
 		else if (ft_strchr(" #+-0hjlz.123456789", fmt[op->i]))
 				return (ft_option(fmt, op));
+		//printf("zero= %d\n", op->flags.zero);
 	}
 }
 

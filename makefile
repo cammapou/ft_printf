@@ -45,6 +45,7 @@ SRC =	ft_printf.c \
 		ft_strcat.c \
 		ft_putendl.c \
 		ft_putstr.c \
+		ft_print_u.c \
 		ft_putchar.c
 
 
