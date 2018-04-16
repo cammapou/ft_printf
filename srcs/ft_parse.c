@@ -100,7 +100,7 @@ void	ft_get_spec(const char *restrict fmt, t_env *op)
 	else if (((fmt[op->i] == 'c' || fmt[op->i] == 's') && op->mod == pf_l) ||
 			fmt[op->i] == 'C' || fmt[op->i] == 'S')
 		ft_spec_wchar(op, fmt[op->i]);
-	else if (ft_strchr("boxBOX", fmt[op->i]))
+	else if (ft_strchr("oxOX", fmt[op->i]))
 		ft_spec_base(op, fmt[op->i]);
 	else if (fmt[op->i] == 'p' || fmt[op->i] == 'P')
 		ft_spec_ptraddr(op, fmt[op->i]);
