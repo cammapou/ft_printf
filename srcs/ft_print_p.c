@@ -40,9 +40,10 @@ void	ft_print_ptraddr_width(t_env *op)
 {
 	int len;
 
+	op->flags.width = op->flags.width - 1;
 	len = ft_strlen(op->out);
-	while (op->flags.width-- > len)
-		op->ret += write(1, " ", 1);
+	while (--op->flags.width > len)
+		op->ret += op->flags.zero == 1 ? write(1, "0", 1) : write(1, " ", 1);
 }
 
 void	ft_print_ptraddr(t_env *op, char type)

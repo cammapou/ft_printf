@@ -34,7 +34,7 @@ int	main()
 	char				null = '\0';
 	char				*strnull = "NULL";
 	int					zero = 0;
-
+	int *c;
 	//wchar_t 			tt = 0xFFFF;
 	//int i = 1;
 	//char	*z = "bonjour";
@@ -592,10 +592,10 @@ int	main()
 			ft_printf("|%-5%|\n");
 			printf("|%-5%|\n\n");
 
-			ft_printf("|%|\n");
-			printf("|%|\n");
-			ft_printf("|% |\n");
-			printf("|% |\n");
+			printf("%d\n",ft_printf("|%|\n"));
+			printf("%d\n",printf("|%|\n"));
+			printf("%d\n",ft_printf("|% |\n"));
+			printf("%d\n",printf("|% |\n"));
 			ft_printf("|% h|\n");
 			printf("|% h|\n");
 			ft_printf("|% hZ%|\n");
@@ -612,6 +612,20 @@ int	main()
 			printf("%zj", 9223372036854775807);
 			ft_printf("%lhh", 2147483647);
 			printf("%lhh", 2147483647);
+			ft_printf("|%D|\n", -1L);
+			printf("|%D|\n", -1L);
+			ft_printf("{%05p}\n", 0);
+			printf("{%05p}\n", 0);
+			ft_printf("%hhO, %hhO\n", 0, USHRT_MAX);
+			printf("%hhO, %hhO\n", 0, USHRT_MAX);
+		//	ft_printf("%p\n", &i);
+			//printf("%p\n", &i);
+			ft_printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
+			printf("%s %C %d %p %x %% %S\n", "bonjour ", L'該', 42, &free, 42, L"لحم خنزير");
+			ft_printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C\n","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+			//printf("%s%d%p%%%S%D%i%o%O%u%U%x%X%c%C","bonjour", 42, &c, L"暖炉", LONG_MAX, 42, 42, 42, 100000, ULONG_MAX, 42, 42, 'c', L'플');
+			ft_printf("{%-15Z}\n", 123);
+			printf("{%-15Z}\n", 123);
 	//printf("|%x\n|", 0);
 
 	/*else if (op->flags.space == 1 && op->flags.plus == 0 && op->flags.width <= 0)

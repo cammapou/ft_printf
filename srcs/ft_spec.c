@@ -41,6 +41,7 @@ void	ft_spec_ptraddr(t_env *op, char type)
 
 	value = va_arg(op->ap, long);
 	p = (unsigned long)value;
+	op->ret += write(1, "0x", 2);
 	if (op->flags.press == 0)
 		op->out = ft_strdup("\0");
 	else
