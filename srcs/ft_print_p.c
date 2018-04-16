@@ -47,10 +47,11 @@ void	ft_print_ptraddr_width(t_env *op)
 
 void	ft_print_ptraddr(t_env *op, char type)
 {
-	ft_ptraddr_prec(op);
+	if (op->flags.zero && op->flags.press == -1)
+		op->flags.press = op->flags.width - 2;
 	if (type == 'p')
 		ft_strlower(op->out);
-	if (op->flags.neg)
+	if (op->flags.minus)
 	{
 		op->ret += write(1, op->out, ft_strlen(op->out));
 		ft_print_ptraddr_width(op);

@@ -7,18 +7,20 @@
 # include <stdlib.h>
 # include <wchar.h>
 # include <limits.h>
+# include <string.h>
 # define BUFF_SIZE 4096
 
-typedef struct	s_option
+typedef enum	e_mod
 {
-	int			h;
-	int			hh;
-	int			l;
-	int			ll;
-	int			j;
-	int			z;
-	int			nomod;
-}				t_option;
+	pf_nomod = 0,
+	pf_h,
+	pf_hh,
+	pf_l,
+	pf_ll,
+	pf_j,
+	pf_z,
+}				t_mod;
+
 
 typedef	struct	s_flags
 {
@@ -26,6 +28,7 @@ typedef	struct	s_flags
 	int			neg;
 	int			hash;
 	int			zero;
+	int 		minus;
 	int			space;
 	int			width;
 	int			press;
@@ -38,7 +41,7 @@ typedef	struct	s_env
 	int			j;
 	va_list		ap;
 	t_flags		flags;
-	t_option	opt;
+	t_mod	mod;
 	char		*out;
 	long 		tmp;
 	int			ret;
@@ -52,11 +55,11 @@ int		ft_printf(const char *format, ...);
 /*
 **				ft_parse
 */
-void	ft_option(const char *format, t_env *op);
-void	ft_initflag(t_flags flags);
-void	ft_height(const char *format, t_env *op);
-void	ft_initoption(t_option *opt);
-void	ft_get_spec(const char *format, t_env *op);
+void	ft_init_flag(t_flags *flags);
+void	ft_get_mod(const char *restrict fmt, t_env *op);
+void	ft_get_prec(const char *restrict fmt, t_env *op);
+void	ft_option(const char *restrict fmt, t_env *op);
+void	ft_get_spec(const char *restrict fmt, t_env *op);
 /*
 **				ft_get_spec
 */
@@ -65,7 +68,7 @@ void  ft_spec_int(t_env *op);
 void	ft_spec_unsint(t_env *op, char type);
 void	ft_spec_wchar(t_env *op, char type);
 void	ft_spec_percent(t_env *op);
-int	ft_spec_ptraddr(t_env *op, char type);
+void	ft_spec_ptraddr(t_env *op, char type);
 void	ft_spec_base(t_env *op, char type);
 /*
 **				ft_print_str
@@ -88,24 +91,17 @@ void	ft_check_digit_sign(t_env *op);
 void	ft_print_digit_width(t_env *op);
 void	ft_print_digit_sign(t_env *op);
 /*
-**				ft_print_unsigned
-*/
-void	ft_print_digit_u(t_env *op);
-void	ft_check_digit_prec_u(t_env *op);
-void	ft_print_digit_width_u(t_env *op);
-
-/*
 **				wchar_c
 */
 void	ft_print_wchar(t_env *op, wchar_t ws);
 void	ft_print_wchar_minus(t_env *op, wchar_t ws);
 void	ft_put_wc(t_env *op, wchar_t c);
-void	ft_put_wchar(t_env *op, char c);
+void	ft_put_wchar(char c);
 /*
 **				wchar_str
 */
 void	ft_print_wstr(t_env *op, wchar_t *wc);
-void	ft_print_wstr_minus(t_env *op, wchar_t *wc);
+void	ft_print_wstr_minus(t_env *op, wchar_t *wc, int len);
 int		ft_get_wstr_len(wchar_t *wc);
 void	ft_put_wstr_c(t_env *op, char c);
 /*
@@ -152,6 +148,8 @@ char	*ft_strcat(char *dest, const char *src);
 void	ft_putendl(char const *s);
 void	ft_putstr(char const *s);
 void	ft_putchar(char c);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_atoi(const char *str);
 
 
 

@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cammapou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/10 11:28:18 by cammapou          #+#    #+#             */
-/*   Updated: 2018/04/10 11:28:20 by cammapou         ###   ########.fr       */
+/*   Created: 2017/11/10 12:03:39 by cammapou          #+#    #+#             */
+/*   Updated: 2017/11/24 10:58:47 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *fmt, ...)
+int		ft_atoi(const char *str)
 {
-	t_env op;
+	unsigned int	i;
+	int				neg;
+	int				res;
 
-	ft_bzero(&op, sizeof(op));
-	va_start(op.ap, fmt);
-	while (fmt[op.i])
+	res = 0;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	neg = i;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (fmt[op.i] == '%' && fmt[op.i + 1] != '%')
-		{
-			++op.i;
-			ft_option(fmt, &op);
-			ft_get_spec(fmt, &op);
-		}
-		else if (fmt[op.i] == '%' && fmt[op.i + 1] == '%')
-		{
-			op.ret = op.ret + write(1, "%", 1);
-			op.i = op.i + 2;
-		}
-		else
-			op.ret += write(1, &fmt[op.i++], 1);
+		res = res * 10 + (str[i] - 48);
+		i++;
 	}
-	va_end(op.ap);
-	return (op.ret);
+	if (str[neg] == '-')
+		return (-res);
+	return (res);
 }

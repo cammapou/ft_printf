@@ -17,7 +17,7 @@ void	ft_put_wstr_c(t_env *op, char c)
 	op->ret += write(1, &c, 1);
 }
 
-int		ft_put_wstr(t_env *op, wchar_t c)
+void	ft_put_wstr(t_env *op, wchar_t c)
 {
 	if (c <= 0x7F)
 		ft_put_wstr_c(op, c);
@@ -39,7 +39,6 @@ int		ft_put_wstr(t_env *op, wchar_t c)
 		ft_put_wstr_c(op, ((c >> 6) & 0x3F) + 0x80);
 		ft_put_wstr_c(op, (c & 0x3F) + 0x80);
 	}
-	return (0);
 }
 
 int		ft_get_wstr_len(wchar_t *wc)
@@ -63,12 +62,12 @@ int		ft_get_wstr_len(wchar_t *wc)
 	return (len);
 }
 
-void	ft_print_wstr_minus(t_env *op, wchar_t *wc)
+void	ft_print_wstr_minus(t_env *op, wchar_t *wc, int len)
 {
 	int		i;
 
 	i = -1;
-	if (op->flags.press > 0)
+	if (op->flags.press >= 0)
 	{
 		while (wc[++i] != 0 && i < op->flags.press)
 			ft_put_wstr(op, wc[i]);
@@ -78,33 +77,31 @@ void	ft_print_wstr_minus(t_env *op, wchar_t *wc)
 		while (wc[++i] != 0)
 			ft_put_wstr(op, wc[i]);
 	}
+	while (op->flags.width-- > len)
+		op->ret += (op->flags.zero == 1 ?
+		write(1, "0", 1) : write(1, " ", 1));
 }
 
 void	ft_print_wstr(t_env *op, wchar_t *wc)
 {
 	int		i;
+	int len;
 
 	i = -1;
-	op->len = ft_get_wstr_len(wc);
-	if (op->flags.neg)
-		ft_print_wstr_minus(op, wc);
+	len = (op->flags.press < 0 ? ft_get_wstr_len(wc) : op->flags.press);
+if (op->flags.minus)
+	ft_print_wstr_minus(op, wc, len);
+else
+{
+	while (op->flags.width-- > len)
+		op->ret += (op->flags.zero == 1 ?
+		write(1, "0", 1) : write(1, " ", 1));
+	if (op->flags.press >= 0)
+		while (wc[++i] != 0 && i * 4 < op->flags.press)
+			ft_put_wstr(op, wc[i]);
 	else
-	{
-		while (op->flags.width-- > op->len)
-		{
-			op->ret += (op->flags.zero == 1 ?
-					write(1, "0", 1) : write(1, " ", 1));
-		}
-		if (op->flags.press > 0)
-		{
-			while (wc[++i] && i < op->flags.press - 1)
-				ft_put_wstr(op, wc[i]);
-		}
-		else
-		{
-			while (wc[++i] != 0)
-				ft_put_wstr(op, wc[i]);
-		}
-	}
-	++op->i;
+		while (wc[++i] != 0)
+			ft_put_wstr(op, wc[i]);
+}
+++op->i;
 }
