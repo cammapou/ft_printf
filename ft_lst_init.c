@@ -6,7 +6,7 @@
 /*   By: cammapou <cammapou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 12:46:01 by cammapou          #+#    #+#             */
-/*   Updated: 2018/06/05 18:03:16 by cammapou         ###   ########.fr       */
+/*   Updated: 2018/06/06 16:36:40 by cammapou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	ft_print_lst_a(t_list *lst_a)
 	{
 		while (lst_a)
 		{
-			ft_printf(" lst_a = %d\n", *((int*)lst_a->content));
+			printf(" lst_a = %d\n", *((int*)lst_a->content));
 			lst_a = lst_a->next;
 		}
-		ft_printf("\n");
+		printf("\n");
 	}
 	else
 		return ;
@@ -52,10 +52,10 @@ void	ft_print_lst_b(t_list *lst_b)
 	{
 		while (lst_b)
 		{
-			ft_printf(" lst_b = %d\n", *((int*)lst_b->content));
+			printf(" lst_b = %d\n", *((int*)lst_b->content));
 			lst_b = lst_b->next;
 		}
-		ft_printf("\n");
+		printf("\n");
 	}
 	else
 		return ;
