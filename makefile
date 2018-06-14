@@ -6,7 +6,7 @@
 #    By: cammapou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/03 14:18:21 by cammapou          #+#    #+#              #
-#    Updated: 2018/06/05 15:53:23 by cammapou         ###   ########.fr        #
+#    Updated: 2018/04/04 13:27:34 by cammapou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ SRC =	ft_printf.c \
 
 OBJ = $(SRC:.c=.o)
 
-SRCDIR = srcs
-OBJDIR = objs
+	SRCDIR = srcs
+	OBJDIR = objs
 
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJ))
@@ -75,14 +75,14 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 $(NAME): $(OBJS)
 	@ar rc $@ $^
 	@ranlib $@
-	@echo "\033[32m[ 100% ]\033[0m Compiling & indexing [ $(NAME) ]" $(OK)
+	@echo "Compiling & indexing" [ $(NAME) ] $(SUCCESS)
 
 clean:
 	@/bin/rm -rf $(OBJDIR)
-	@echo  "\033[32m[ Delete ]\033[0m [ objs ]" $(OK)
+	@echo "Delete" [ objs ] $(OK)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "\033[32m[ Delete ]\033[0m [ $(NAME) ]" $(OK)
+	@echo "Delete" [ $(NAME) ] $(OK)
 
 re: fclean all
